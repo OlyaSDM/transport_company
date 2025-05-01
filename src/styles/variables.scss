@@ -1,0 +1,50 @@
+$color-primary: #3765C2;
+$color-background: #F5F7FA;
+$color-accent: #F4B400;
+$color-dark: #080937;
+$color-white: #FFF;
+
+$color-overlay-light: rgba(0, 0, 0, 0.1);
+$color-overlay-dark: rgba(0, 0, 0, 0.5);
+
+
+$container-max: 87.5rem;
+$container-md: 65rem;
+$container-sm: 55rem;
+$container-xs: 45rem;
+$container-xxs: 35rem;
+
+$hero-content-max: 75rem;
+$hero-content-max-lg: 62.5rem;
+
+$section-padding-y: 6rem;
+$services-padding-y: 5rem;
+
+
+$radius-sm: 0.125rem;
+$radius-lg: 1.875rem;
+$radius-pill: 9999px;
+
+
+$breakpoint-xl: 106.25rem;
+$breakpoint-lg: 90rem; 
+$breakpoint-md: 72rem;
+$breakpoint-sm: 57rem;
+$breakpoint-xs: 48rem;
+$breakpoint-xxs: 990px; 
+
+$animation-fade-up: fadeInUp 1.4s ease-out forwards;
+$transition-base: 0.3s ease;
+$transition-overlay: background 0.5s ease;
+
+$shadow-base: 0 0.3rem 0.6rem rgba(0, 0, 0, 0.2);
+
+$font-title: 2.8rem;
+$font-subtitle: 1.8rem;
+$font-heading-sm: 1.6rem;
+$font-paragraph: 1rem;
+$font-paragraph-lg: 1.2rem;
+$font-description: clamp(1rem, 2.5vw, 1.5rem);
+$font-clamp-title: clamp(2.5rem, 7vw, 6.5rem);
+$font-clamp-title-lg: clamp(2.2rem, 5vw, 6.5rem);
+$font-clamp-button: clamp(0.9rem, 1.5vw, 1.2rem);
