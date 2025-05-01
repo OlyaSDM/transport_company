@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
+import Link from "next/link";  // Импортируем Link
 import styles from "./Header.module.scss";
 
 const Header = () => {
@@ -48,24 +49,24 @@ const Header = () => {
       >
         <ul>
           <li>
-            <a href="/" onClick={toggleMenu}>
+            <Link href="/" onClick={toggleMenu}>
               About Us
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="/about" onClick={toggleMenu}>
+            <Link href="/about" onClick={toggleMenu}>
               Services
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="/services" onClick={toggleMenu}>
+            <Link href="/services" onClick={toggleMenu}>
               Advantages
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="/contact" onClick={toggleMenu}>
+            <Link href="/contact" onClick={toggleMenu}>
               Contacts
-            </a>
+            </Link>
           </li>
         </ul>
         <div className={styles.closeMenu} onClick={toggleMenu}>
