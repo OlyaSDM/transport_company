@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import Link from "next/link";
+import Image from "next/image";
 import styles from "./ServicesBlock.module.scss";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -82,7 +83,13 @@ export default function ServicesBlock() {
 
       <div className={styles.service}>
         <div className={styles.imageWrapper}>
-          <img src="/1.jpg" alt="Service 1" className={styles.image} />
+          <Image
+            src="/1.jpg"
+            alt="Service 1"
+            className={styles.image}
+            width={750} 
+            height={400} 
+          />
         </div>
         <div className={styles.text}>
           <h3>
@@ -103,7 +110,13 @@ export default function ServicesBlock() {
 
       <div className={`${styles.service} ${styles.reversed}`}>
         <div className={styles.imageWrapper}>
-          <img src="/2.jpg" alt="Service 2" className={styles.image} />
+          <Image
+            src="/2.jpg"
+            alt="Service 2"
+            className={styles.image}
+            width={750} 
+            height={400}
+          />
         </div>
         <div className={styles.text}>
           <h3>

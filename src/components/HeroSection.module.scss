@@ -168,7 +168,7 @@
   .overlay {
     position: absolute;
     inset: 0;
-    background: rgba(0, 0, 0, 2.85);
+    background-color: color.scale($color-accent, $lightness: -15%);
     z-index: 0;
     transition: background 0.5s ease;
   }
