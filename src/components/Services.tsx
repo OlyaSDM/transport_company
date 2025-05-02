@@ -54,7 +54,7 @@ export default function ServicesBlock() {
             h3,
             {
               text: h3Text,
-              duration: 0.9,
+              duration: 1.2,
               ease: "power1.inOut",
             },
             "+=0.2"
@@ -63,7 +63,7 @@ export default function ServicesBlock() {
             p,
             {
               text: pText,
-              duration: 1.4,
+              duration: 1.8,
               ease: "power1.inOut",
             },
             "+=0.1"
