@@ -7,71 +7,73 @@ import Link from "next/link";
 import Image from "next/image";
 import styles from "./ServicesBlock.module.scss";
 
-gsap.registerPlugin(ScrollTrigger);
-gsap.registerPlugin(require("gsap/TextPlugin"));
-
 export default function ServicesBlock() {
   const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (typeof window === "undefined") return;
+    import("gsap/TextPlugin").then((TextPlugin) => {
+      gsap.registerPlugin(ScrollTrigger);
+      gsap.registerPlugin(TextPlugin);
 
-    const services = sectionRef.current?.querySelectorAll(`.${styles.service}`);
+      if (typeof window === "undefined") return;
 
-    if (!services || services.length === 0) return;
+      const services = sectionRef.current?.querySelectorAll(`.${styles.service}`);
 
-    services.forEach((service) => {
-      const image = service.querySelector(`.${styles.imageWrapper}`);
-      const h3 = service.querySelector("h3");
-      const p = service.querySelector("p");
+      if (!services || services.length === 0) return;
 
-      if (!image || !h3 || !p) return;
+      services.forEach((service) => {
+        const image = service.querySelector(`.${styles.imageWrapper}`);
+        const h3 = service.querySelector("h3");
+        const p = service.querySelector("p");
 
-      const h3Text = h3.innerHTML;
-      const pText = p.innerHTML;
+        if (!image || !h3 || !p) return;
 
-      h3.setAttribute("data-text", h3Text);
-      p.setAttribute("data-text", pText);
+        const h3Text = h3.innerHTML;
+        const pText = p.innerHTML;
 
-      h3.innerHTML = "";
-      p.innerHTML = "";
+        h3.setAttribute("data-text", h3Text);
+        p.setAttribute("data-text", pText);
 
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: service,
-          start: "top 80%",
-          toggleActions: "play none none reverse",
-        },
+        h3.innerHTML = "";
+        p.innerHTML = "";
+
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: service,
+            start: "top 80%",
+            toggleActions: "play none none reverse",
+          },
+        });
+
+        tl.fromTo(
+          image,
+          { opacity: 0, scale: 0.6 },
+          { opacity: 1, scale: 1, duration: 1, ease: "power3.out" }
+        )
+          .to(
+            h3,
+            {
+              text: h3Text,
+              duration: 0.9,
+              ease: "power1.inOut",
+            },
+            "+=0.2"
+          )
+          .to(
+            p,
+            {
+              text: pText,
+              duration: 1.4,
+              ease: "power1.inOut",
+            },
+            "+=0.1"
+          );
       });
 
-      tl.fromTo(
-        image,
-        { opacity: 0, scale: 0.6 },
-        { opacity: 1, scale: 1, duration: 1, ease: "power3.out" }
-      )
-        .to(
-          h3,
-          {
-            text: h3Text,
-            duration: 0.9,
-            ease: "power1.inOut",
-          },
-          "+=0.2"
-        )
-        .to(
-          p,
-          {
-            text: pText,
-            duration: 1.4,
-            ease: "power1.inOut",
-          },
-          "+=0.1"
-        );
+      return () => {
+        ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+      };
     });
-
-    return () => {
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-    };
   }, []);
 
   return (
@@ -87,8 +89,8 @@ export default function ServicesBlock() {
             src="/1.jpg"
             alt="Service 1"
             className={styles.image}
-            width={750} 
-            height={400} 
+            width={750}
+            height={400}
           />
         </div>
         <div className={styles.text}>
@@ -114,7 +116,7 @@ export default function ServicesBlock() {
             src="/2.jpg"
             alt="Service 2"
             className={styles.image}
-            width={750} 
+            width={750}
             height={400}
           />
         </div>
