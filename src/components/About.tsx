@@ -27,11 +27,11 @@ export default function AboutUs() {
       tl.fromTo(
         imageRef.current,
         { x: isMobile ? 0 : "-100%", opacity: 0 },
-        { x: 0, opacity: 1, duration: 1, ease: "power3.out" }
+        { x: 0, opacity: 1, duration: 1.6, ease: "power3.out" }
       ).fromTo(
         textRef.current,
         { x: isMobile ? 0 : "100%", opacity: 0 },
-        { x: 0, opacity: 1, duration: 1, ease: "power3.out" },
+        { x: 0, opacity: 1, duration: 1.6, ease: "power3.out" },
         "<0.2"
       );
     });
@@ -44,7 +44,7 @@ export default function AboutUs() {
       <div className={styles.container}>
         <div className={styles.imageClip} ref={imageRef}>
           <Image
-            src="/about.jpg"
+            src="/about.jpeg"
             alt="About our company"
             fill
             className={styles.image}
@@ -56,7 +56,17 @@ export default function AboutUs() {
           <h2>About us</h2>
           <p>
             There are many variations of Lorem Ipsum available, but the majority
-            have suffered alteration in some form, by injected humor...
+            have suffered alteration in some form, by injected humor... There
+            are many variations of Lorem Ipsum available, but the majority have
+            suffered alteration in some form, by injected humor... There are
+            many variations of Lorem Ipsum available, but the majority have
+            suffered alteration in some form, by injected humor... There are
+            many variations of Lorem Ipsum available, but the majority have
+            suffered alteration in some form, by injected humor... There are
+            many variations of Lorem Ipsum available, but the majority have
+            suffered alteration in some form, by injected humor... There are
+            many variations of Lorem Ipsum available, but the majority have
+            suffered alteration in some form, by injected humor...
           </p>
         </div>
       </div>

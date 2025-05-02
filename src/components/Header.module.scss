@@ -1,4 +1,4 @@
-@import '../styles/variables';
+@use '../styles/variables' as *;
 
 @keyframes fadeInUp {
   from {
@@ -37,6 +37,7 @@
   position: fixed;
   top: 0;
   width: 100%;
+  box-sizing: border-box;
   padding: 0.125rem 1.875rem;
   display: flex;
   justify-content: space-between;
@@ -45,6 +46,8 @@
   box-shadow: none;
   transition: background-color 0.3s ease, box-shadow 0.3s ease, padding 0.3s ease;
   z-index: 100;
+  
+  
 
   &.scrolled {
     background-color: $color-primary;

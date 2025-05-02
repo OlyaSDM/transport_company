@@ -8,14 +8,14 @@ export default function HeroSection() {
       <div className={styles.content}>
         <p className={styles.line}></p>
         <h1 className={styles.title}>
-          We are a great <span>trucking</span> company
+          Modern logistics <span>and</span> smart control
         </h1>
-        <p className={styles.description}>
+        {/* <p className={styles.description}>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa mollis
           quam adipiscing fames nec. Non viverra etiam nulla pellentesque cursus
           facilisi nibh enim.
-        </p>
-        <button className={styles.button}>Discover more</button>
+        </p> */}
+        {/* <button className={styles.button}>Discover more</button> */}
       </div>
     </section>
   );

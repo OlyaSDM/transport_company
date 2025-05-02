@@ -1,22 +1,25 @@
 "use client";
 import { useState, useEffect } from "react";
-import Link from "next/link";  // Импортируем Link
+import Link from "next/link";
 import styles from "./Header.module.scss";
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [hasInteracted, setHasInteracted] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => {
+    const handleScroll = () => {
       setScrolled(window.scrollY > 10);
     };
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const toggleMenu = () => {
+    if (!hasInteracted) setHasInteracted(true);
+
     if (menuOpen) {
       setIsClosing(true);
       setTimeout(() => {
@@ -31,6 +34,7 @@ const Header = () => {
   return (
     <header className={`${styles.header} ${scrolled ? styles.scrolled : ""}`}>
       <div className={styles.logo}>LOGO</div>
+
       <div className={styles.burger} onClick={toggleMenu}>
         <span
           className={menuOpen ? styles.burgerLineOpen : styles.burgerLine}
@@ -42,10 +46,11 @@ const Header = () => {
           className={menuOpen ? styles.burgerLineOpen : styles.burgerLine}
         ></span>
       </div>
+
       <nav
-        className={`${styles.nav} ${menuOpen ? styles.open : ""} ${
-          isClosing ? styles.closing : ""
-        }`}
+        className={`${styles.nav} 
+          ${hasInteracted && menuOpen ? styles.open : ""} 
+          ${hasInteracted && isClosing ? styles.closing : ""}`}
       >
         <ul>
           <li>
@@ -69,6 +74,7 @@ const Header = () => {
             </Link>
           </li>
         </ul>
+
         <div className={styles.closeMenu} onClick={toggleMenu}>
           <span className={styles.closeLine}></span>
           <span className={styles.closeLine}></span>

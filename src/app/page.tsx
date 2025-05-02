@@ -5,6 +5,7 @@ import "./globals.scss";
 import AboutUs from "@/components/About";
 import ServicesBlock from "@/components/Services";
 
+
 export default function HomePage() {
   return (
     <div>
@@ -17,7 +18,7 @@ export default function HomePage() {
       <Header />
       <HeroSection />
       <AboutUs />
-      <ServicesBlock />
+<ServicesBlock />
     </div>
   );
 }
