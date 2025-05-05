@@ -105,7 +105,7 @@ export default function ServicesBlock() {
             transportation companies
           </h3>
           <p>
-            This solution optimizes drivers' daily work, improving productivity,
+            This solution optimizes drivers &apos; daily work, improving productivity,
             safety, and communication with the central office. <br></br>
             Key features of the app:
             {/* <p>Smart route planning considering traffic and current road conditions.

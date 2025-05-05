@@ -12,7 +12,7 @@ export default function Footer() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setStatus(''); 
+    setStatus('');
     try {
       const res = await fetch('/api/send-email', {
         method: 'POST',
@@ -56,8 +56,8 @@ export default function Footer() {
             <div><FaPhoneAlt /> <a href="tel:+88883888888">+888 88 388 88 88</a></div>
             <div className={styles.icons}>
               <a href="mailto:info@example.com" aria-label="Email"><MdEmail /></a>
-              <a href="#" aria-label="WhatsApp"><FaWhatsapp /></a>
-              <a href="#" aria-label="Telegram"><FaTelegramPlane /></a>
+              <a href="#" aria-label="WhatsApp" role="button"><FaWhatsapp /></a>
+              <a href="#" aria-label="Telegram" role="button"><FaTelegramPlane /></a>
             </div>
           </address>
         </section>
