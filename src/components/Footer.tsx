@@ -1,35 +1,35 @@
-'use client'
+"use client";
 
-import { useState } from 'react'
-import styles from './Footer.module.scss'
-import { motion } from 'framer-motion'
-import { FaWhatsapp, FaTelegramPlane, FaMapMarkerAlt, FaPhoneAlt } from 'react-icons/fa'
-import { MdEmail } from 'react-icons/md'
+import { useState } from 'react';
+import styles from './Footer.module.scss';
+import { motion } from 'framer-motion';
+import { FaWhatsapp, FaTelegramPlane, FaMapMarkerAlt, FaPhoneAlt } from 'react-icons/fa';
+import { MdEmail } from 'react-icons/md';
 
 export default function Footer() {
-  const [email, setEmail] = useState('')
-  const [status, setStatus] = useState('')
+  const [email, setEmail] = useState('');
+  const [status, setStatus] = useState('');
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
+    e.preventDefault();
 
     try {
       const res = await fetch('/api/send-email', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email }),
-      })
+      });
 
       if (res.ok) {
-        setStatus('Thank you! We will contact you.')
-        setEmail('')
+        setStatus('Thank you! We will contact you.');
+        setEmail('');
       } else {
-        setStatus('Error sending. Try again later.')
+        setStatus('Error sending. Try again later.');
       }
     } catch (error) {
-      setStatus('Error sending.')
+      setStatus('Error sending.');
     }
-  }
+  };
 
   return (
     <footer id="contacts" className={styles.footer}>
@@ -79,5 +79,5 @@ export default function Footer() {
         </section>
       </motion.div>
     </footer>
-  )
+  );
 }

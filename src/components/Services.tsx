@@ -101,21 +101,20 @@ export default function ServicesBlock() {
         </div>
         <div className={styles.text}>
           <h3>
-          We are developing a modern application designed for drivers of transportation companies
+            We are developing a modern application designed for drivers of transportation companies
           </h3>
           <p>
-          This solution optimizes drivers' daily work, improving productivity, safety, and communication with the central office. <br></br>
-          Key features of the app:
-{/* <p>Smart route planning considering traffic and current road conditions.
+            This solution optimizes drivers' daily work, improving productivity, safety, and communication with the central office. <br></br>
+            Key features of the app:
+            {/* <p>Smart route planning considering traffic and current road conditions.
 
-Real-time monitoring of vehicle status, including technical data and timely reminders for checks.
+            Real-time monitoring of vehicle status, including technical data and timely reminders for checks.
 
-Intuitive navigation with tips on safe routes and hazardous zones.
+            Intuitive navigation with tips on safe routes and hazardous zones.
 
-Feedback and support for quick resolution of any issues and rapid communication with the dispatcher.
+            Feedback and support for quick resolution of any issues and rapid communication with the dispatcher.
 
-Reporting system for analyzing travel distance, fuel consumption, and other key data.</p> */}
-
+            Reporting system for analyzing travel distance, fuel consumption, and other key data.</p> */}
           </p>
           <Link href="/service2" className={styles.button}>
             Read more

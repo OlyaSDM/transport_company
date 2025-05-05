@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
@@ -13,7 +13,6 @@ const Header = () => {
     typeof window !== "undefined" ? window.innerWidth : 0
   );
 
-  // Обработчик скролла
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 10);
@@ -23,7 +22,6 @@ const Header = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Обработчик изменения размера экрана
   useEffect(() => {
     const handleResize = () => {
       setWindowWidth(window.innerWidth);
@@ -33,7 +31,6 @@ const Header = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // Закрытие меню с задержкой
   const toggleMenu = () => {
     if (!hasInteracted) setHasInteracted(true);
 
@@ -42,13 +39,12 @@ const Header = () => {
       setTimeout(() => {
         setIsClosing(false);
         setMenuOpen(false);
-      }, 400); // Задержка для анимации
+      }, 400);
     } else {
       setMenuOpen(true);
     }
   };
 
-  // Обработка плавной прокрутки
   const handleSmoothScroll = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
@@ -57,10 +53,9 @@ const Header = () => {
     toggleMenu();
   };
 
-  // Логика для скрытия меню при изменении размера экрана
   useEffect(() => {
-    if (windowWidth > 1080 && menuOpen) { // Если экран шире 1080px и меню открыто
-      setMenuOpen(false); // Закрываем меню
+    if (windowWidth > 1080 && menuOpen) {
+      setMenuOpen(false);
     }
   }, [windowWidth]);
 
@@ -92,17 +87,26 @@ const Header = () => {
             </Link>
           </li>
           <li>
-            <Link href="#services" onClick={() => handleSmoothScroll("services")}>
+            <Link
+              href="#services"
+              onClick={() => handleSmoothScroll("services")}
+            >
               Services
             </Link>
           </li>
           <li>
-            <Link href="#advantages" onClick={() => handleSmoothScroll("advantages")}>
+            <Link
+              href="#advantages"
+              onClick={() => handleSmoothScroll("advantages")}
+            >
               Advantages
             </Link>
           </li>
           <li>
-            <Link href="#contacts" onClick={() => handleSmoothScroll("contacts")}>
+            <Link
+              href="#contacts"
+              onClick={() => handleSmoothScroll("contacts")}
+            >
               Contacts
             </Link>
           </li>
