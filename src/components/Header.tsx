@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import styles from "./Header.module.scss";
-import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link as ScrollLink } from "react-scroll";
 
@@ -87,6 +86,8 @@ export default function Header() {
 
   const closeMenu = () => setIsMenuOpen(false);
 
+  const menuItems = ["About us", "Services", "Advantages", "Contacts"];
+
   return (
     <header className={`${styles.header} ${isScrolled ? styles.scrolled : ""}`}>
       <div className={styles.logo}>LOGO</div>
@@ -132,25 +133,23 @@ export default function Header() {
             variants={menuVariants}
           >
             <ul>
-              {["About us", "Services", "Advantages", "Contacts"].map(
-                (text, index) => (
-                  <motion.li
-                    key={index}
-                    variants={menuItemVariants}
-                    custom={index}
+              {menuItems.map((text, index) => (
+                <motion.li
+                  key={index}
+                  variants={menuItemVariants}
+                  custom={index}
+                >
+                  <ScrollLink
+                    to={text.toLowerCase().replace(" ", "")}
+                    smooth={true}
+                    offset={-70}
+                    duration={500}
+                    onClick={closeMenu}
                   >
-                    <ScrollLink
-                      to={text.toLowerCase().replace(" ", "")}
-                      smooth={true}
-                      offset={-70}
-                      duration={500}
-                      onClick={closeMenu}
-                    >
-                      {text}
-                    </ScrollLink>
-                  </motion.li>
-                )
-              )}
+                    {text}
+                  </ScrollLink>
+                </motion.li>
+              ))}
             </ul>
           </motion.nav>
         )}
@@ -159,18 +158,18 @@ export default function Header() {
       {!isMobile && (
         <nav className={styles.nav}>
           <ul>
-            <li>
-              <Link href="/about">About us</Link>
-            </li>
-            <li>
-              <Link href="/services">Services</Link>
-            </li>
-            <li>
-              <Link href="/advantages">Advantages</Link>
-            </li>
-            <li>
-              <Link href="/contacts">Contacts</Link>
-            </li>
+            {menuItems.map((text, index) => (
+              <li key={index}>
+                <ScrollLink
+                  to={text.toLowerCase().replace(" ", "")}
+                  smooth={true}
+                  offset={-70}
+                  duration={500}
+                >
+                  {text}
+                </ScrollLink>
+              </li>
+            ))}
           </ul>
         </nav>
       )}

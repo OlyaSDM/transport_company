@@ -40,7 +40,7 @@ export default function AboutUs() {
   }, []);
 
   return (
-    <section id="about" className={styles.wrapper}>
+    <section id="aboutus" className={styles.wrapper}>
       <div className={styles.container}>
         <div className={styles.imageClip} ref={imageRef}>
           <Image
