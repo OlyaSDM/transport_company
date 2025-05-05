@@ -26,7 +26,7 @@ export default function Footer() {
       } else {
         setStatus('Error sending. Try again later.');
       }
-    } catch (error) {
+    } catch {
       setStatus('Error sending. Please try again.');
     }
   };
