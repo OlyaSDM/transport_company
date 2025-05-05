@@ -57,7 +57,7 @@ const Header = () => {
     if (windowWidth > 1080 && menuOpen) {
       setMenuOpen(false);
     }
-  }, [windowWidth]);
+  }, [windowWidth, menuOpen]);
 
   return (
     <header className={`${styles.header} ${scrolled ? styles.scrolled : ""}`}>

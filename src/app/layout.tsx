@@ -12,7 +12,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html className="container">
+    <html lang="en" className="container">
+      <head>
+        <link
+          href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
+          rel="stylesheet"
+        />
+      </head>
       <body>{children}</body>
     </html>
   );

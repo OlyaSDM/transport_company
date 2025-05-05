@@ -12,7 +12,7 @@ export default function Footer() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
+    setStatus(''); 
     try {
       const res = await fetch('/api/send-email', {
         method: 'POST',
@@ -27,7 +27,7 @@ export default function Footer() {
         setStatus('Error sending. Try again later.');
       }
     } catch (error) {
-      setStatus('Error sending.');
+      setStatus('Error sending. Please try again.');
     }
   };
 

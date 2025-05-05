@@ -101,10 +101,12 @@ export default function ServicesBlock() {
         </div>
         <div className={styles.text}>
           <h3>
-            We are developing a modern application designed for drivers of transportation companies
+            We are developing a modern application designed for drivers of
+            transportation companies
           </h3>
           <p>
-            This solution optimizes drivers' daily work, improving productivity, safety, and communication with the central office. <br></br>
+            This solution optimizes drivers' daily work, improving productivity,
+            safety, and communication with the central office. <br></br>
             Key features of the app:
             {/* <p>Smart route planning considering traffic and current road conditions.
 
