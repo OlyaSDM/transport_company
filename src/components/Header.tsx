@@ -8,7 +8,6 @@ const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [hasInteracted, setHasInteracted] = useState(false);
   const [windowWidth, setWindowWidth] = useState(
     typeof window !== "undefined" ? window.innerWidth : 0
   );
@@ -18,7 +17,6 @@ const Header = () => {
       setScrolled(window.scrollY > 10);
     };
     window.addEventListener("scroll", handleScroll);
-
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -26,14 +24,11 @@ const Header = () => {
     const handleResize = () => {
       setWindowWidth(window.innerWidth);
     };
-
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   const toggleMenu = () => {
-    if (!hasInteracted) setHasInteracted(true);
-
     if (menuOpen) {
       setIsClosing(true);
       setTimeout(() => {
@@ -56,6 +51,7 @@ const Header = () => {
   useEffect(() => {
     if (windowWidth > 1080 && menuOpen) {
       setMenuOpen(false);
+      setIsClosing(false);
     }
   }, [windowWidth, menuOpen]);
 
@@ -76,9 +72,11 @@ const Header = () => {
       </div>
 
       <nav
-        className={`${styles.nav} 
-          ${hasInteracted && menuOpen ? styles.open : ""} 
-          ${hasInteracted && isClosing ? styles.closing : ""}`}
+        className={`
+          ${styles.nav} 
+          ${menuOpen ? styles.open : ""} 
+          ${isClosing ? styles.closing : ""}
+        `}
       >
         <ul>
           <li>
@@ -87,26 +85,17 @@ const Header = () => {
             </Link>
           </li>
           <li>
-            <Link
-              href="#services"
-              onClick={() => handleSmoothScroll("services")}
-            >
+            <Link href="#services" onClick={() => handleSmoothScroll("services")}>
               Services
             </Link>
           </li>
           <li>
-            <Link
-              href="#advantages"
-              onClick={() => handleSmoothScroll("advantages")}
-            >
+            <Link href="#advantages" onClick={() => handleSmoothScroll("advantages")}>
               Advantages
             </Link>
           </li>
           <li>
-            <Link
-              href="#contacts"
-              onClick={() => handleSmoothScroll("contacts")}
-            >
+            <Link href="#contacts" onClick={() => handleSmoothScroll("contacts")}>
               Contacts
             </Link>
           </li>
