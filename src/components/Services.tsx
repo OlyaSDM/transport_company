@@ -66,11 +66,11 @@ export default function ServicesBlock() {
       <div className={styles.service}>
         <div className={styles.imageWrapper}>
           <Image
-            src="/1.jpg"
+            src="/s2.webp"
             alt="Service 1"
             className={styles.image}
-            width={750}
-            height={400}
+            fill
+            sizes="(max-width: 768px) 100vw, 750px"
           />
         </div>
         <div className={styles.text}>
@@ -92,11 +92,11 @@ export default function ServicesBlock() {
       <div className={`${styles.service} ${styles.reversed}`}>
         <div className={styles.imageWrapper}>
           <Image
-            src="/2.jpg"
+            src="/s1.webp"
             alt="Service 2"
             className={styles.image}
-            width={750}
-            height={400}
+            fill
+            sizes="(max-width: 768px) 100vw, 750px"
           />
         </div>
         <div className={styles.text}>
@@ -105,8 +105,9 @@ export default function ServicesBlock() {
             transportation companies
           </h3>
           <p>
-            This solution optimizes drivers &apos; daily work, improving productivity,
-            safety, and communication with the central office. <br></br>
+            This solution optimizes drivers &apos; daily work, improving
+            productivity, safety, and communication with the central office.{" "}
+            <br></br>
             Key features of the app:
             {/* <p>Smart route planning considering traffic and current road conditions.
 

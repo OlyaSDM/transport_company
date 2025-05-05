@@ -44,7 +44,7 @@ export default function AboutUs() {
       <div className={styles.container}>
         <div className={styles.imageClip} ref={imageRef}>
           <Image
-            src="/about.jpeg"
+            src="/about.webp"
             alt="About our company"
             fill
             className={styles.image}
@@ -58,14 +58,13 @@ export default function AboutUs() {
             We are a modern transportation company that blends years of
             logistics experience with cutting-edge digital innovation. Our
             mission is not just to move freight, but to build a seamless, safe,
-            and efficient environment for everyone involved in delivery.{" "}
-            <br></br>
+            and efficient environment for everyone involved in delivery. <br />
             Every day, we craft smart routes where timing, reliability, and
             attention to detail are more than words — they’re our core values.
             But we don’t stop there: we’re also developing our own mobile app to
             make drivers’ lives easier and more connected. From order tracking
             to live dispatcher chat — everything in one place, always within
-            reach. <br></br>
+            reach. <br />
             We connect cities, countries, and technologies — so you can trust
             the journey from departure to destination.
           </p>

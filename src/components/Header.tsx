@@ -1,24 +1,80 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import Link from "next/link";
+import { useEffect, useState } from "react";
 import styles from "./Header.module.scss";
+import Link from "next/link";
+import { motion, AnimatePresence } from "framer-motion";
+import { Link as ScrollLink } from "react-scroll";
 
-const Header = () => {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [isClosing, setIsClosing] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-  const [windowWidth, setWindowWidth] = useState(0);
-  const [hasMounted, setHasMounted] = useState(false);
+const menuVariants = {
+  hidden: {
+    x: "100%",
+    opacity: 0,
+    scale: 0.95,
+    filter: "blur(4px)",
+  },
+  visible: {
+    x: 0,
+    opacity: 1,
+    scale: 1,
+    filter: "blur(0px)",
+    transition: {
+      duration: 0.6,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
+  exit: {
+    x: "100%",
+    opacity: 0,
+    scale: 0.97,
+    filter: "blur(4px)",
+    transition: {
+      duration: 0.5,
+      ease: [0.42, 0, 0.58, 1],
+    },
+  },
+};
+
+const menuItemVariants = {
+  hidden: { opacity: 0, y: -20 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: i * 0.2,
+      duration: 1,
+      ease: [0.25, 0.1, 0.25, 1],
+    },
+  }),
+};
+
+const closeIconVariants = {
+  hidden: { rotate: -90, opacity: 0, scale: 0.6 },
+  visible: {
+    rotate: 0,
+    opacity: 1,
+    scale: 1,
+    transition: { duration: 0.4, ease: [0.42, 0, 0.58, 1] },
+  },
+  exit: {
+    rotate: 90,
+    opacity: 0,
+    scale: 0.6,
+    transition: { duration: 0.3, ease: [0.42, 0, 0.58, 1] },
+  },
+};
+
+export default function Header() {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    setWindowWidth(window.innerWidth);
-    setHasMounted(true);
-  }, []);
+    const handleScroll = () => setIsScrolled(window.scrollY > 20);
+    const handleResize = () => setIsMobile(window.innerWidth < 1080);
 
-  useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 10);
-    const handleResize = () => setWindowWidth(window.innerWidth);
+    handleScroll();
+    handleResize();
 
     window.addEventListener("scroll", handleScroll);
     window.addEventListener("resize", handleResize);
@@ -29,80 +85,95 @@ const Header = () => {
     };
   }, []);
 
-  useEffect(() => {
-    if (windowWidth > 1080 && menuOpen) {
-      setMenuOpen(false);
-      setIsClosing(false);
-    }
-  }, [windowWidth, menuOpen]);
-
-  const toggleMenu = () => {
-    if (menuOpen) {
-      setIsClosing(true);
-      setTimeout(() => {
-        setIsClosing(false);
-        setMenuOpen(false);
-      }, 400);
-    } else {
-      setMenuOpen(true);
-    }
-  };
-
-  const handleSmoothScroll = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-    toggleMenu();
-  };
+  const closeMenu = () => setIsMenuOpen(false);
 
   return (
-    <header className={`${styles.header} ${scrolled ? styles.scrolled : ""}`}>
+    <header className={`${styles.header} ${isScrolled ? styles.scrolled : ""}`}>
       <div className={styles.logo}>LOGO</div>
 
-      <div className={styles.burger} onClick={toggleMenu}>
-        <span className={menuOpen ? styles.burgerLineOpen : styles.burgerLine}></span>
-        <span className={menuOpen ? styles.burgerLineOpen : styles.burgerLine}></span>
-        <span className={menuOpen ? styles.burgerLineOpen : styles.burgerLine}></span>
-      </div>
+      {isMobile && !isMenuOpen && (
+        <motion.div
+          className={styles.burger}
+          onClick={() => setIsMenuOpen(true)}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.3 }}
+        >
+          <span className={styles.burgerLine}></span>
+          <span className={styles.burgerLine}></span>
+          <span className={styles.burgerLine}></span>
+        </motion.div>
+      )}
 
-      <nav
-        className={`
-          ${styles.nav} 
-          ${hasMounted && menuOpen ? styles.open : ""} 
-          ${hasMounted && isClosing ? styles.closing : ""}
-        `}
-      >
-        <ul>
-          <li>
-            <Link href="#about" onClick={() => handleSmoothScroll("about")}>
-              About Us
-            </Link>
-          </li>
-          <li>
-            <Link href="#services" onClick={() => handleSmoothScroll("services")}>
-              Services
-            </Link>
-          </li>
-          <li>
-            <Link href="#advantages" onClick={() => handleSmoothScroll("advantages")}>
-              Advantages
-            </Link>
-          </li>
-          <li>
-            <Link href="#contacts" onClick={() => handleSmoothScroll("contacts")}>
-              Contacts
-            </Link>
-          </li>
-        </ul>
+      <AnimatePresence>
+        {isMobile && isMenuOpen && (
+          <motion.div
+            className={styles.closeMenu}
+            onClick={closeMenu}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+            variants={closeIconVariants}
+          >
+            <span className={styles.closeLine}></span>
+            <span className={styles.closeLine}></span>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
-        <div className={styles.closeMenu} onClick={toggleMenu}>
-          <span className={styles.closeLine}></span>
-          <span className={styles.closeLine}></span>
-        </div>
-      </nav>
+      <AnimatePresence>
+        {isMobile && isMenuOpen && (
+          <motion.nav
+            className={styles.nav}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+            variants={menuVariants}
+          >
+            <ul>
+              {["About us", "Services", "Advantages", "Contacts"].map(
+                (text, index) => (
+                  <motion.li
+                    key={index}
+                    variants={menuItemVariants}
+                    custom={index}
+                  >
+                    <ScrollLink
+                      to={text.toLowerCase().replace(" ", "")}
+                      smooth={true}
+                      offset={-70}
+                      duration={500}
+                      onClick={closeMenu}
+                    >
+                      {text}
+                    </ScrollLink>
+                  </motion.li>
+                )
+              )}
+            </ul>
+          </motion.nav>
+        )}
+      </AnimatePresence>
+
+      {!isMobile && (
+        <nav className={styles.nav}>
+          <ul>
+            <li>
+              <Link href="/about">About us</Link>
+            </li>
+            <li>
+              <Link href="/services">Services</Link>
+            </li>
+            <li>
+              <Link href="/advantages">Advantages</Link>
+            </li>
+            <li>
+              <Link href="/contacts">Contacts</Link>
+            </li>
+          </ul>
+        </nav>
+      )}
     </header>
   );
-};
-
-export default Header;
+}

@@ -40,14 +40,14 @@ export default function AdvantagesSection() {
       <section id="advantages" className={styles.advantagesSection}>
         <div className={styles.overlay}></div>
         <Image
-    src="/ad.jpg"
-    alt="Truck background"
-    fill
-    style={{ objectFit: "cover" }}
-    quality={90}
-    className={styles.bgImage}
-    priority
-  />
+          src="/ad.webp"
+          alt="Truck background"
+          fill
+          style={{ objectFit: "cover" }}
+          quality={90}
+          className={styles.bgImage}
+          priority
+        />
 
         <div className={styles.content}>
           <h2>
