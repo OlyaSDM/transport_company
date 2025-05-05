@@ -8,25 +8,33 @@ const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [windowWidth, setWindowWidth] = useState(
-    typeof window !== "undefined" ? window.innerWidth : 0
-  );
+  const [windowWidth, setWindowWidth] = useState(0);
+  const [hasMounted, setHasMounted] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 10);
-    };
+    setWindowWidth(window.innerWidth);
+    setHasMounted(true);
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 10);
+    const handleResize = () => setWindowWidth(window.innerWidth);
+
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleResize);
+    };
   }, []);
 
   useEffect(() => {
-    const handleResize = () => {
-      setWindowWidth(window.innerWidth);
-    };
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+    if (windowWidth > 1080 && menuOpen) {
+      setMenuOpen(false);
+      setIsClosing(false);
+    }
+  }, [windowWidth, menuOpen]);
 
   const toggleMenu = () => {
     if (menuOpen) {
@@ -43,39 +51,26 @@ const Header = () => {
   const handleSmoothScroll = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
-      element.scrollIntoView({ behavior: "smooth", block: "start" });
+      element.scrollIntoView({ behavior: "smooth" });
     }
     toggleMenu();
   };
-
-  useEffect(() => {
-    if (windowWidth > 1080 && menuOpen) {
-      setMenuOpen(false);
-      setIsClosing(false);
-    }
-  }, [windowWidth, menuOpen]);
 
   return (
     <header className={`${styles.header} ${scrolled ? styles.scrolled : ""}`}>
       <div className={styles.logo}>LOGO</div>
 
       <div className={styles.burger} onClick={toggleMenu}>
-        <span
-          className={menuOpen ? styles.burgerLineOpen : styles.burgerLine}
-        ></span>
-        <span
-          className={menuOpen ? styles.burgerLineOpen : styles.burgerLine}
-        ></span>
-        <span
-          className={menuOpen ? styles.burgerLineOpen : styles.burgerLine}
-        ></span>
+        <span className={menuOpen ? styles.burgerLineOpen : styles.burgerLine}></span>
+        <span className={menuOpen ? styles.burgerLineOpen : styles.burgerLine}></span>
+        <span className={menuOpen ? styles.burgerLineOpen : styles.burgerLine}></span>
       </div>
 
       <nav
         className={`
           ${styles.nav} 
-          ${menuOpen ? styles.open : ""} 
-          ${isClosing ? styles.closing : ""}
+          ${hasMounted && menuOpen ? styles.open : ""} 
+          ${hasMounted && isClosing ? styles.closing : ""}
         `}
       >
         <ul>
