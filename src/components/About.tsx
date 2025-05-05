@@ -40,7 +40,7 @@ export default function AboutUs() {
   }, []);
 
   return (
-    <section className={styles.wrapper}>
+    <section id="about" className={styles.wrapper}>
       <div className={styles.container}>
         <div className={styles.imageClip} ref={imageRef}>
           <Image
@@ -55,18 +55,19 @@ export default function AboutUs() {
         <div className={styles.text} ref={textRef}>
           <h2>About us</h2>
           <p>
-            There are many variations of Lorem Ipsum available, but the majority
-            have suffered alteration in some form, by injected humor... There
-            are many variations of Lorem Ipsum available, but the majority have
-            suffered alteration in some form, by injected humor... There are
-            many variations of Lorem Ipsum available, but the majority have
-            suffered alteration in some form, by injected humor... There are
-            many variations of Lorem Ipsum available, but the majority have
-            suffered alteration in some form, by injected humor... There are
-            many variations of Lorem Ipsum available, but the majority have
-            suffered alteration in some form, by injected humor... There are
-            many variations of Lorem Ipsum available, but the majority have
-            suffered alteration in some form, by injected humor...
+            We are a modern transportation company that blends years of
+            logistics experience with cutting-edge digital innovation. Our
+            mission is not just to move freight, but to build a seamless, safe,
+            and efficient environment for everyone involved in delivery.{" "}
+            <br></br>
+            Every day, we craft smart routes where timing, reliability, and
+            attention to detail are more than words — they’re our core values.
+            But we don’t stop there: we’re also developing our own mobile app to
+            make drivers’ lives easier and more connected. From order tracking
+            to live dispatcher chat — everything in one place, always within
+            reach. <br></br>
+            We connect cities, countries, and technologies — so you can trust
+            the journey from departure to destination.
           </p>
         </div>
       </div>

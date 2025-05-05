@@ -11,73 +11,53 @@ export default function ServicesBlock() {
   const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    import("gsap/TextPlugin").then((TextPlugin) => {
-      gsap.registerPlugin(ScrollTrigger);
-      gsap.registerPlugin(TextPlugin);
+    gsap.registerPlugin(ScrollTrigger);
 
-      if (typeof window === "undefined") return;
+    if (typeof window === "undefined") return;
 
-      const services = sectionRef.current?.querySelectorAll(`.${styles.service}`);
+    const services = sectionRef.current?.querySelectorAll(`.${styles.service}`);
 
-      if (!services || services.length === 0) return;
+    if (!services || services.length === 0) return;
 
-      services.forEach((service) => {
-        const image = service.querySelector(`.${styles.imageWrapper}`);
-        const h3 = service.querySelector("h3");
-        const p = service.querySelector("p");
+    services.forEach((service) => {
+      const image = service.querySelector(`.${styles.imageWrapper}`);
+      const h3 = service.querySelector("h3");
+      const p = service.querySelector("p");
 
-        if (!image || !h3 || !p) return;
+      if (!image || !h3 || !p) return;
 
-        const h3Text = h3.innerHTML;
-        const pText = p.innerHTML;
-
-        h3.setAttribute("data-text", h3Text);
-        p.setAttribute("data-text", pText);
-
-        h3.innerHTML = "";
-        p.innerHTML = "";
-
-        const tl = gsap.timeline({
-          scrollTrigger: {
-            trigger: service,
-            start: "top 80%",
-            toggleActions: "play none none reverse",
-          },
-        });
-
-        tl.fromTo(
-          image,
-          { opacity: 0, scale: 0.6 },
-          { opacity: 1, scale: 1, duration: 1, ease: "power3.out" }
-        )
-          .to(
-            h3,
-            {
-              text: h3Text,
-              duration: 1.2,
-              ease: "power1.inOut",
-            },
-            "+=0.2"
-          )
-          .to(
-            p,
-            {
-              text: pText,
-              duration: 1.8,
-              ease: "power1.inOut",
-            },
-            "+=0.1"
-          );
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: service,
+          start: "top 80%",
+          toggleActions: "play none none reverse",
+        },
       });
 
-      return () => {
-        ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-      };
+      tl.fromTo(
+        image,
+        { opacity: 0, scale: 0.8 },
+        { opacity: 1, scale: 1, duration: 0.9, ease: "power2.out" }
+      )
+        .fromTo(
+          h3,
+          { opacity: 0, y: 20 },
+          { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }
+        )
+        .fromTo(
+          p,
+          { opacity: 0, y: 20 },
+          { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }
+        );
     });
+
+    return () => {
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+    };
   }, []);
 
   return (
-    <section className={styles.services} ref={sectionRef}>
+    <section id="services" className={styles.services} ref={sectionRef}>
       <h2 className={styles.title}>
         <span className={styles.line} />
         Services
@@ -94,15 +74,14 @@ export default function ServicesBlock() {
           />
         </div>
         <div className={styles.text}>
-          <h3>
-            Where can I get some
-            <br />
-            can I get some
-          </h3>
+          <h3>Transport services for freight shipping</h3>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum
-            dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit
-            amet
+            We offer reliable and efficient transport services for freight
+            shipping. Our company has a modern fleet and professional drivers,
+            allowing us to guarantee the safety and timeliness of deliveries. We
+            provide both one-time and regular shipments on flexible terms,
+            taking into account the specific needs of your business or
+            individual requirements.
           </p>
           <Link href="/service1" className={styles.button}>
             Read more
@@ -122,14 +101,21 @@ export default function ServicesBlock() {
         </div>
         <div className={styles.text}>
           <h3>
-            Where can I get some
-            <br />
-            can I get some
+          We are developing a modern application designed for drivers of transportation companies
           </h3>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum
-            dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit
-            amet..
+          This solution optimizes drivers' daily work, improving productivity, safety, and communication with the central office. <br></br>
+          Key features of the app:
+{/* <p>Smart route planning considering traffic and current road conditions.
+
+Real-time monitoring of vehicle status, including technical data and timely reminders for checks.
+
+Intuitive navigation with tips on safe routes and hazardous zones.
+
+Feedback and support for quick resolution of any issues and rapid communication with the dispatcher.
+
+Reporting system for analyzing travel distance, fuel consumption, and other key data.</p> */}
+
           </p>
           <Link href="/service2" className={styles.button}>
             Read more

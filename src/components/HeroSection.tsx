@@ -3,7 +3,7 @@ import styles from "./HeroSection.module.scss";
 
 export default function HeroSection() {
   return (
-    <section className={styles.hero}>
+    <section  className={styles.hero}>
       <div className={styles.overlay} />
       <div className={styles.content}>
         <p className={styles.line}></p>

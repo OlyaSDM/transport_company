@@ -4,6 +4,8 @@ import Head from "next/head";
 import "./globals.scss";
 import AboutUs from "@/components/About";
 import ServicesBlock from "@/components/Services";
+import AdvantagesSection from "@/components/AdvantagesSection";
+import Footer from "@/components/Footer";
 
 
 export default function HomePage() {
@@ -19,6 +21,10 @@ export default function HomePage() {
       <HeroSection />
       <AboutUs />
 <ServicesBlock />
+<AdvantagesSection/>
+{/* <Email /> */}
+<Footer />
+
     </div>
   );
 }
