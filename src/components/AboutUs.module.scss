@@ -9,7 +9,7 @@
 }
 
 .container {
-  max-width: 87.5rem;
+  max-width: 82rem;
   margin: 0 auto;
   display: flex;
   background-color: $color-background;
@@ -55,7 +55,8 @@
 }
 
 .image {
-  object-fit: cover;
+  background-position: center;
+
   width: 100%;
   height: 100%;
   z-index: -1;
@@ -66,14 +67,14 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 2rem 3rem;
+  padding: 2rem 2rem;
   width: 100%;
   line-height: 1.6;
 
   h2 {
     font-size: 2.8rem;
     font-weight: bold;
-    margin-bottom: 3rem;
+    margin-bottom: 1rem;
 
     &::before {
       content: '';

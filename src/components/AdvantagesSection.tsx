@@ -8,22 +8,28 @@ import Head from "next/head";
 const advantages = [
   {
     id: 1,
-    text: "Guaranteed safety and on-time delivery",
+    text: "Own Fleet, Real Testing",
     description:
-      "With a modern fleet and experienced drivers, we ensure reliable freight transportation, meeting all deadlines and safety requirements — for both one-time and regular shipments.",
+      "We use what we build — on real roads, every day.",
   },
   {
     id: 2,
-    text: "Digital optimization through a driver app",
+    text: "Built with AI",
     description:
-      "Our proprietary mobile app helps drivers plan smart routes based on traffic, receive maintenance reminders, navigate safely, and stay in constant contact with dispatchers — boosting productivity and minimizing risks on the road.",
+      "From analytics to virtual managers, we automate smarter.",
   },
   {
     id: 3,
-    text: "Flexible terms tailored to your business",
+    text: "End-to-End Sync",
     description:
-      "We offer personalized solutions for each client — from one-time deliveries to long-term partnerships. Transparent pricing, responsive support, and adaptability to your industry’s specifics ensure a smooth and efficient collaboration.",
+      "Software and transport, working in harmony.",
   },
+  {
+    id: 4,
+    text: "European Reach",
+    description:
+      "Wherever your cargo needs to go, we’ve got it covered.",
+  }
 ];
 
 export default function AdvantagesSection() {

@@ -62,7 +62,9 @@ export default function ServicesBlock() {
         <span className={styles.line} />
         Services
       </h2>
-
+      <p className={styles.p}>
+      We help logistics companies scale with tech-driven solutions and ensure cargo gets where it needs to go — fast and efficiently.
+          </p>
       <div className={styles.service}>
         <div className={styles.imageWrapper}>
           <Image
@@ -74,14 +76,9 @@ export default function ServicesBlock() {
           />
         </div>
         <div className={styles.text}>
-          <h3>Transport services for freight shipping</h3>
+          <h3>Smart Logistics Software</h3>
           <p>
-            We offer reliable and efficient transport services for freight
-            shipping. Our company has a modern fleet and professional drivers,
-            allowing us to guarantee the safety and timeliness of deliveries. We
-            provide both one-time and regular shipments on flexible terms,
-            taking into account the specific needs of your business or
-            individual requirements.
+          Build, automate, and manage with intelligent systems made by logistics experts.
           </p>
           <Link href="/service1" className={styles.button}>
             Read more
@@ -101,14 +98,10 @@ export default function ServicesBlock() {
         </div>
         <div className={styles.text}>
           <h3>
-            We are developing a modern application designed for drivers of
-            transportation companies
+          Freight Services in the EU
           </h3>
           <p>
-            This solution optimizes drivers &apos; daily work, improving
-            productivity, safety, and communication with the central office.{" "}
-            <br></br>
-            Key features of the app:
+          We deliver across Europe using our own tech-optimized fleet.
             {/* <p>Smart route planning considering traffic and current road conditions.
 
             Real-time monitoring of vehicle status, including technical data and timely reminders for checks.

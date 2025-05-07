@@ -55,18 +55,15 @@ export default function AboutUs() {
         <div className={styles.text} ref={textRef}>
           <h2>About us</h2>
           <p>
-            We are a modern transportation company that blends years of
-            logistics experience with cutting-edge digital innovation. Our
-            mission is not just to move freight, but to build a seamless, safe,
-            and efficient environment for everyone involved in delivery. <br />
-            Every day, we craft smart routes where timing, reliability, and
-            attention to detail are more than words — they’re our core values.
-            But we don’t stop there: we’re also developing our own mobile app to
-            make drivers’ lives easier and more connected. From order tracking
-            to live dispatcher chat — everything in one place, always within
-            reach. <br />
-            We connect cities, countries, and technologies — so you can trust
-            the journey from departure to destination.
+            We are a technology-driven logistics company that combines
+            real-world freight transportation with in-house software
+            development. <br />
+            Operating across the European Union with our own fleet of vehicles,
+            we not only deliver goods efficiently but also test and refine our
+            advanced digital solutions in real logistics environments. <br />
+            Our mission is to empower logistics businesses with intelligent
+            tools, from driver workplace automation to AI-powered process
+            analytics and virtual managers.
           </p>
         </div>
       </div>
