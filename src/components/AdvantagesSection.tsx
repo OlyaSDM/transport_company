@@ -36,10 +36,14 @@ export default function AdvantagesSection() {
   return (
     <>
       <Head>
-        <title>Our Advantages</title>
+        <title>Our Advantages | Logistics Company</title>
         <meta
           name="description"
-          content="Key benefits of our transportation service: reliability, experience, and modern approach."
+          content="Discover the key benefits of our transportation service: reliability, experience, and a modern approach to logistics."
+        />
+        <meta
+          name="keywords"
+          content="transportation, logistics, fleet management, AI-powered analytics, European transport"
         />
       </Head>
 
@@ -47,7 +51,7 @@ export default function AdvantagesSection() {
         <div className={styles.overlay}></div>
         <Image
           src="/ad.webp"
-          alt="Truck background"
+          alt="Truck driving on the road, symbolizing our transportation service"
           fill
           style={{ objectFit: "cover" }}
           quality={90}
@@ -57,7 +61,7 @@ export default function AdvantagesSection() {
 
         <div className={styles.content}>
           <h2>
-            <span className={styles.line} /> Advantages
+            <span className={styles.line} /> Our Advantages
           </h2>
           <div className={styles.items}>
             {advantages.map((adv, index) => {
@@ -65,9 +69,7 @@ export default function AdvantagesSection() {
               return (
                 <motion.div
                   key={adv.id}
-                  className={`${styles.item} ${
-                    isLeft ? styles.left : styles.right
-                  }`}
+                  className={`${styles.item} ${isLeft ? styles.left : styles.right}`}
                   initial={{ opacity: 0, y: 50, scale: 0.95 }}
                   whileInView={{ opacity: 1, y: 0, scale: 1 }}
                   viewport={{ once: true, amount: 0.6 }}
@@ -80,7 +82,7 @@ export default function AdvantagesSection() {
                   <div className={styles.row}>
                     <div className={styles.number}>{adv.id}</div>
                     <div>
-                      <p className={styles.text}>{adv.text}</p>
+                      <h3 className={styles.text}>{adv.text}</h3> 
                       <p className={styles.description}>{adv.description}</p>
                     </div>
                   </div>

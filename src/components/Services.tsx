@@ -57,19 +57,20 @@ export default function ServicesBlock() {
   }, []);
 
   return (
-    <section id="services" className={styles.services} ref={sectionRef}>
-      <h2 className={styles.title}>
+    <section id="services" className={styles.services} ref={sectionRef} aria-labelledby="services-title">
+      <h2 id="services-title" className={styles.title}>
         <span className={styles.line} />
         Services
       </h2>
       <p className={styles.p}>
-      We help logistics companies scale with tech-driven solutions and ensure cargo gets where it needs to go — fast and efficiently.
-          </p>
+        We help logistics companies scale with tech-driven solutions and ensure cargo gets where it needs to go — fast and efficiently.
+      </p>
+
       <div className={styles.service}>
         <div className={styles.imageWrapper}>
           <Image
             src="/s2.webp"
-            alt="Service 1"
+            alt="Smart Logistics Software Service"
             className={styles.image}
             fill
             sizes="(max-width: 768px) 100vw, 750px"
@@ -78,9 +79,9 @@ export default function ServicesBlock() {
         <div className={styles.text}>
           <h3>Smart Logistics Software</h3>
           <p>
-          Build, automate, and manage with intelligent systems made by logistics experts.
+            Build, automate, and manage with intelligent systems made by logistics experts.
           </p>
-          <Link href="/service1" className={styles.button}>
+          <Link href="/service1" className={styles.button} aria-label="Read more about Smart Logistics Software">
             Read more
           </Link>
         </div>
@@ -90,29 +91,18 @@ export default function ServicesBlock() {
         <div className={styles.imageWrapper}>
           <Image
             src="/s1.webp"
-            alt="Service 2"
+            alt="Freight Services in the EU"
             className={styles.image}
             fill
             sizes="(max-width: 768px) 100vw, 750px"
           />
         </div>
         <div className={styles.text}>
-          <h3>
-          Freight Services in the EU
-          </h3>
+          <h3>Freight Services in the EU</h3>
           <p>
-          We deliver across Europe using our own tech-optimized fleet.
-            {/* <p>Smart route planning considering traffic and current road conditions.
-
-            Real-time monitoring of vehicle status, including technical data and timely reminders for checks.
-
-            Intuitive navigation with tips on safe routes and hazardous zones.
-
-            Feedback and support for quick resolution of any issues and rapid communication with the dispatcher.
-
-            Reporting system for analyzing travel distance, fuel consumption, and other key data.</p> */}
+            We deliver across Europe using our own tech-optimized fleet.
           </p>
-          <Link href="/service2" className={styles.button}>
+          <Link href="/service2" className={styles.button} aria-label="Read more about Freight Services in the EU">
             Read more
           </Link>
         </div>

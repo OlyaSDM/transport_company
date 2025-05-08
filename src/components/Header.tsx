@@ -89,8 +89,10 @@ export default function Header() {
   const menuItems = ["About us", "Services", "Advantages", "Contacts"];
 
   return (
-    <header className={`${styles.header} ${isScrolled ? styles.scrolled : ""}`}>
-      <div className={styles.logo}>LOGO</div>
+    <header className={`${styles.header} ${isScrolled ? styles.scrolled : ""}`} role="banner">
+      <div className={styles.logo}>
+        <img src="/logo.png" alt="Trucking Company" />
+      </div>
 
       {isMobile && !isMenuOpen && (
         <motion.div
@@ -100,6 +102,8 @@ export default function Header() {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.3 }}
+          role="button"
+          aria-label="Open navigation menu"
         >
           <span className={styles.burgerLine}></span>
           <span className={styles.burgerLine}></span>
@@ -116,6 +120,8 @@ export default function Header() {
             animate="visible"
             exit="exit"
             variants={closeIconVariants}
+            role="button"
+            aria-label="Close navigation menu"
           >
             <span className={styles.closeLine}></span>
             <span className={styles.closeLine}></span>
@@ -131,6 +137,8 @@ export default function Header() {
             animate="visible"
             exit="exit"
             variants={menuVariants}
+            role="navigation"
+            aria-label="Main navigation menu"
           >
             <ul>
               {menuItems.map((text, index) => (
@@ -145,6 +153,7 @@ export default function Header() {
                     offset={-70}
                     duration={500}
                     onClick={closeMenu}
+                    aria-label={`Go to ${text}`}
                   >
                     {text}
                   </ScrollLink>
@@ -156,7 +165,7 @@ export default function Header() {
       </AnimatePresence>
 
       {!isMobile && (
-        <nav className={styles.nav}>
+        <nav className={styles.nav} role="navigation" aria-label="Main navigation menu">
           <ul>
             {menuItems.map((text, index) => (
               <li key={index}>
@@ -165,6 +174,7 @@ export default function Header() {
                   smooth={true}
                   offset={-70}
                   duration={500}
+                  aria-label={`Go to ${text}`}
                 >
                   {text}
                 </ScrollLink>

@@ -32,51 +32,53 @@ export default function Footer() {
   };
 
   return (
-    <footer id="contacts" className={styles.footer}>
+    <footer className={styles.footer} id="contacts">
       <motion.div
-        className={styles.inner}
+        className={styles.container}
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
       >
-        <section className={styles.info}>
-          <p>
-            Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a
-            piece of classical Latin literature from 45 BC, making it over 2000 years old.
-          </p>
-          <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-          </p>
-        </section>
+        <div className={styles.block}>
+          <h2>About</h2>
+          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+          <p>Contrary to popular belief, it is not random text. It has roots in classical Latin.</p>
+        </div>
 
-        <section className={styles.contact}>
-          <h2 className={styles.foot}>Contact</h2>
+        <div className={styles.block}>
+          <h2>Contact</h2>
           <address>
-            <div><FaMapMarkerAlt /> <span>Lorem Ipsum street</span></div>
-            <div><FaPhoneAlt /> <a href="tel:+88883888888">+888 88 388 88 88</a></div>
-            <div className={styles.icons}>
-              <a href="mailto:info@example.com" aria-label="Email"><MdEmail /></a>
-              <a href="#" aria-label="WhatsApp" role="button"><FaWhatsapp /></a>
-              <a href="#" aria-label="Telegram" role="button"><FaTelegramPlane /></a>
+            <p><FaMapMarkerAlt aria-hidden="true" /> Lorem Ipsum Street</p>
+            <p><FaPhoneAlt aria-hidden="true" /> <a href="tel:+88883888888" aria-label="Call us at +888 88 388 88 88">+888 88 388 88 88</a></p>
+            <p><MdEmail aria-hidden="true" /> <a href="mailto:info@example.com" aria-label="Email us at info@example.com">info@example.com</a></p>
+            <div className={styles.socials}>
+              <a href="#" aria-label="WhatsApp" role="link">
+                <FaWhatsapp />
+              </a>
+              <a href="#" aria-label="Telegram" role="link">
+                <FaTelegramPlane />
+              </a>
             </div>
           </address>
-        </section>
+        </div>
 
-        <section className={styles.form}>
-          <h2 className={styles.foot}>More information</h2>
+        <div className={styles.block}>
+          {/* <h2>Stay Updated</h2> */}
           <form onSubmit={handleSubmit}>
+            <label htmlFor="email" className="sr-only">Your email</label>
             <input
+              id="email"
               type="email"
               placeholder="Your email"
-              aria-label="Email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
+              aria-describedby="emailHelp"
             />
-            <button type="submit" className={styles.send}>Send</button>
-            {status && <p className={styles.status}>{status}</p>}
+            <button type="submit">Send</button>
+            {status && <p className={styles.status} aria-live="assertive">{status}</p>}
           </form>
-        </section>
+        </div>
       </motion.div>
     </footer>
   );
