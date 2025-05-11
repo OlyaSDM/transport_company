@@ -5,7 +5,6 @@ import "./globals.scss";
 import AboutUs from "@/components/About";
 import ServicesBlock from "@/components/Services";
 import AdvantagesSection from "@/components/AdvantagesSection";
-import Email from "@/components/Email";
 
 export default function HomePage() {
   return (
