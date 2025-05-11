@@ -1,0 +1,148 @@
+@use '../styles/variables' as *;
+
+.all {
+  background: linear-gradient(to bottom right, $color-light-background, $color-secondary-light);
+  padding: 4rem 1.5rem;
+}
+
+.service {
+  max-width: 1200px;
+  margin: 0 auto 3rem;
+
+  .header {
+    text-align: center;
+    margin-bottom: 3rem;
+
+    h1 {
+      font-size: 2.8rem;
+      margin: 10rem 0 1rem;
+      color: $color-dark;
+
+      @media (max-width: 768px) {
+        font-size: 2.4rem;
+        margin-top: 6rem;
+      }
+
+      @media (max-width: 480px) {
+        font-size: 2rem;
+        margin-top: 4rem;
+      }
+    }
+
+    p {
+      font-size: 1.1rem;
+      color: $color-text-medium;
+
+      @media (max-width: 768px) {
+        font-size: 1rem;
+      }
+
+      @media (max-width: 480px) {
+        font-size: 0.95rem;
+      }
+    }
+
+    .line {
+      width: 6.75rem;
+      height: 0.1875rem;
+      background: $color-accent;
+      border-radius: 999px;
+      position: absolute;
+      margin-top: -1rem;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    .text {
+      h2 {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+        text-align: center;
+        color: $color-text-strong;
+
+        @media (max-width: 768px) {
+          font-size: 1.3rem;
+        }
+
+        @media (max-width: 480px) {
+          font-size: 1.1rem;
+        }
+      }
+
+      .features {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+
+        .featureItem {
+          display: flex;
+          gap: 1rem;
+          align-items: flex-start;
+          background: $color-light-background;
+          border: 0.08rem solid $color-accent;
+          padding: 1rem 1.5rem;
+          border-radius: 1rem;
+          box-shadow: 0 4px 15px $color-shadow;
+
+          h3 {
+            font-size: 1rem;
+            margin-bottom: 0.25rem;
+            color: $color-dark;
+
+            @media (max-width: 768px) {
+              font-size: 0.95rem;
+            }
+
+            @media (max-width: 480px) {
+              font-size: 0.9rem;
+            }
+          }
+
+          p {
+            font-size: 1.1rem;
+            color: $color-text-medium;
+            line-height: 1.4;
+            text-align: start;
+
+            @media (max-width: 768px) {
+              font-size: 1rem;
+            }
+
+            @media (max-width: 480px) {
+              font-size: 0.95rem;
+            }
+          }
+
+          .icon {
+            color: $color-accent;
+            margin-top: 0.2rem;
+            flex-shrink: 0;
+          }
+        }
+      }
+
+      p {
+        margin-top: 2rem;
+        font-size: 1.1rem;
+        color: $color-text-light;
+        line-height: 1.6;
+        text-align: center;
+        font-weight: 500;
+
+        @media (max-width: 768px) {
+          font-size: 1rem;
+        }
+
+        @media (max-width: 480px) {
+          font-size: 0.95rem;
+        }
+      }
+    }
+  }
+}

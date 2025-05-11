@@ -1,7 +1,10 @@
 import "./globals.scss";
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
-import Script from "next/script"; // для JSON-LD
+import Script from "next/script";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import Email from "@/components/Email";
 
 const montserrat = Montserrat({
   subsets: ["latin", "cyrillic"],
@@ -28,7 +31,7 @@ export const metadata: Metadata = {
     siteName: "TransportCom",
     images: [
       {
-        url: "/og-image.jpg", 
+        url: "/og-image.jpg",
         width: 1200,
         height: 630,
         alt: "Truck on the road — freight delivery across Europe",
@@ -51,7 +54,6 @@ export default function RootLayout({
   return (
     <html lang="en" className="container">
       <head>
-        {/* Structured Data JSON-LD */}
         <Script
           id="ld-json"
           type="application/ld+json"
@@ -78,7 +80,12 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={montserrat.className}>{children}</body>
+      <body className={montserrat.className}>
+        <Header />
+        <main>{children}</main>
+        <Email />
+        <Footer />
+      </body>
     </html>
   );
 }

@@ -9,27 +9,23 @@ const advantages = [
   {
     id: 1,
     text: "Own Fleet, Real Testing",
-    description:
-      "We use what we build — on real roads, every day.",
+    description: "We use what we build — on real roads, every day.",
   },
   {
     id: 2,
     text: "Built with AI",
-    description:
-      "From analytics to virtual managers, we automate smarter.",
+    description: "From analytics to virtual managers, we automate smarter.",
   },
   {
     id: 3,
     text: "End-to-End Sync",
-    description:
-      "Software and transport, working in harmony.",
+    description: "Software and transport, working in harmony.",
   },
   {
     id: 4,
     text: "European Reach",
-    description:
-      "Wherever your cargo needs to go, we’ve got it covered.",
-  }
+    description: "Wherever your cargo needs to go, we’ve got it covered.",
+  },
 ];
 
 export default function AdvantagesSection() {
@@ -69,7 +65,9 @@ export default function AdvantagesSection() {
               return (
                 <motion.div
                   key={adv.id}
-                  className={`${styles.item} ${isLeft ? styles.left : styles.right}`}
+                  className={`${styles.item} ${
+                    isLeft ? styles.left : styles.right
+                  }`}
                   initial={{ opacity: 0, y: 50, scale: 0.95 }}
                   whileInView={{ opacity: 1, y: 0, scale: 1 }}
                   viewport={{ once: true, amount: 0.6 }}
@@ -82,7 +80,7 @@ export default function AdvantagesSection() {
                   <div className={styles.row}>
                     <div className={styles.number}>{adv.id}</div>
                     <div>
-                      <h3 className={styles.text}>{adv.text}</h3> 
+                      <h3 className={styles.text}>{adv.text}</h3>
                       <p className={styles.description}>{adv.description}</p>
                     </div>
                   </div>

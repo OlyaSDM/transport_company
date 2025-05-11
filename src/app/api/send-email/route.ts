@@ -1,34 +1,33 @@
-import { NextResponse } from 'next/server'
-import nodemailer from 'nodemailer'
+import { NextRequest, NextResponse } from 'next/server';
+import nodemailer from 'nodemailer';
 
-export async function POST(req: Request) {
-  const { email } = await req.json()
+export async function POST(req: NextRequest) {
+  const body = await req.json();
+  const { email } = body;
 
   if (!email) {
-    return NextResponse.json({ error: 'Email is required' }, { status: 400 })
+    return NextResponse.json({ error: 'Email is required' }, { status: 400 });
   }
 
-  const transporter = nodemailer.createTransport({
-    host: 'smtp.example.com',
-    port: 465,
-    secure: true,
-    auth: {
-      user: process.env.SMTP_USER!,
-      pass: process.env.SMTP_PASS!,
-    },
-  })
-
   try {
-    await transporter.sendMail({
-      from: `"Site Form" <${process.env.SMTP_USER}>`,
-      to: 'client@example.com', // Заменить на почту заказчика
-      subject: 'Запрос с сайта',
-      text: `Пользователь оставил email: ${email}`,
-    })
+    const transporter = nodemailer.createTransport({
+      service: 'Gmail',
+      auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS,
+      },
+    });
 
-    return NextResponse.json({ message: 'Email sent' })
+    await transporter.sendMail({
+      from: `"Contact Form" <${process.env.EMAIL_USER}>`,
+      to: process.env.EMAIL_USER,
+      subject: 'New Contact Email',
+      text: `User email: ${email}`,
+    });
+
+    return NextResponse.json({ message: 'Email sent successfully' });
   } catch (error) {
-    console.error('SendMail Error:', error)
-    return NextResponse.json({ error: 'Failed to send email' }, { status: 500 })
+    console.error(error);
+    return NextResponse.json({ error: 'Email sending failed' }, { status: 500 });
   }
 }

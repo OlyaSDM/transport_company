@@ -57,13 +57,19 @@ export default function ServicesBlock() {
   }, []);
 
   return (
-    <section id="services" className={styles.services} ref={sectionRef} aria-labelledby="services-title">
+    <section
+      id="services"
+      className={styles.services}
+      ref={sectionRef}
+      aria-labelledby="services-title"
+    >
       <h2 id="services-title" className={styles.title}>
         <span className={styles.line} />
         Services
       </h2>
       <p className={styles.p}>
-        We help logistics companies scale with tech-driven solutions and ensure cargo gets where it needs to go — fast and efficiently.
+        We help logistics companies scale with tech-driven solutions and ensure
+        cargo gets where it needs to go — fast and efficiently.
       </p>
 
       <div className={styles.service}>
@@ -79,9 +85,14 @@ export default function ServicesBlock() {
         <div className={styles.text}>
           <h3>Smart Logistics Software</h3>
           <p>
-            Build, automate, and manage with intelligent systems made by logistics experts.
+            Build, automate, and manage with intelligent systems made by
+            logistics experts.
           </p>
-          <Link href="/service1" className={styles.button} aria-label="Read more about Smart Logistics Software">
+          <Link
+            href="/serviceone"
+            className={styles.button}
+            aria-label="Read more about Smart Logistics Software"
+          >
             Read more
           </Link>
         </div>
@@ -99,10 +110,12 @@ export default function ServicesBlock() {
         </div>
         <div className={styles.text}>
           <h3>Freight Services in the EU</h3>
-          <p>
-            We deliver across Europe using our own tech-optimized fleet.
-          </p>
-          <Link href="/service2" className={styles.button} aria-label="Read more about Freight Services in the EU">
+          <p>We deliver across Europe using our own tech-optimized fleet.</p>
+          <Link
+            href="/servicetwo"
+            className={styles.button}
+            aria-label="Read more about Freight Services in the EU"
+          >
             Read more
           </Link>
         </div>

@@ -1,19 +1,108 @@
-.emailButton {
-    position: fixed;
-    bottom: 50px;
-    right: 50px;
-    background-color: #F4B400;
-    color: white;
-    border: none;
-    border-radius: 50%;
-    padding: 15px;
-    font-size: 24px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    cursor: pointer;
-    z-index: 999;
-  
-    &:hover {
-      background-color: #0056b3;
-    }
+@use '../styles/variables' as *;
+
+.mailButtonContainer {
+  position: fixed;
+  right: 40px;
+  bottom: 30px;
+  z-index: 1000;
+}
+
+.mailButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  padding: 15px;
+  background-color: $color-dark;
+  color: white;
+  border-radius: 50%;
+  box-shadow: 0 4px 8px rgba(238, 19, 3, 0.1);
+  transition: background-color 0.3s, transform 0.2s ease;
+
+  &:hover {
+    background-color: $color-accent;
+    transform: scale(1.1);
   }
-  
+
+  &:active {
+    background-color: #3765C2;
+  }
+}
+
+.closeButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #333;
+  transition: color 0.3s;
+
+  &:hover {
+    color: $color-dark;
+  }
+}
+
+.formContainer {
+  position: fixed;
+  right: 20px;
+  bottom: 80px;
+  z-index: 1000;
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, visibility 0s 0.3s;
+
+  &.show {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.3s;
+  }
+}
+
+.emailForm {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.emailForm input {
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+
+  &:focus {
+    border-color: $color-accent;
+    box-shadow: 0 0 5px rgba($color-accent, 0.4);
+  }
+}
+
+.emailForm button {
+  background-color: $color-primary;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: $color-accent;
+  }
+}
+
+.statusMessage {
+  margin-top: 10px;
+  color: $color-dark;
+}
