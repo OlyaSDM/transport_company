@@ -73,14 +73,15 @@ export default function AboutUs() {
       <section id="aboutus" className={styles.wrapper}>
         <div className={styles.container}>
           <div className={styles.imageClip} ref={imageRef}>
-            <Image
-              src="/images/about.webp"
-              alt="About our logistics company providing freight transportation across Europe"
-              fill
-              className={styles.image}
-              priority
-              sizes="(max-width: 700px) 100vw, 50vw"
-            />
+<Image
+  src="/images/about.webp"
+  alt="About our logistics company providing freight transportation across Europe"
+  className={styles.image}
+  fill
+  sizes="(max-width: 700px) 100vw, 50vw"
+  priority
+  decoding="async"
+/>
           </div>
           <div className={styles.text} ref={textRef}>
             <h2>About Us</h2>
