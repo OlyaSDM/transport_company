@@ -46,7 +46,7 @@ export default function AdvantagesSection() {
       <section id="advantages" className={styles.advantagesSection}>
         <div className={styles.overlay}></div>
         <Image
-          src="/ad.webp"
+          src="/images/ad.webp"
           alt="Truck driving on the road, symbolizing our transportation service"
           fill
           style={{ objectFit: "cover" }}

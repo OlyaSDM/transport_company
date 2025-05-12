@@ -74,7 +74,7 @@ export default function AboutUs() {
         <div className={styles.container}>
           <div className={styles.imageClip} ref={imageRef}>
             <Image
-              src="/about.webp"
+              src="/images/about.webp"
               alt="About our logistics company providing freight transportation across Europe"
               fill
               className={styles.image}
