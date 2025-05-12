@@ -69,7 +69,7 @@ export default function Header() {
   const closeMenu = () => setIsMenuOpen(false);
 
   const menuItems = [
-    { text: "About us", link: "/#about-us" },
+    { text: "About us", link: "/#aboutus" },
     { text: "Services", link: "/#services" },
     { text: "Advantages", link: "/#advantages" },
     { text: "Contacts", link: "/#contacts" },
