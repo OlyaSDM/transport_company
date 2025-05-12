@@ -16,8 +16,9 @@
   background-color: $color-dark;
   color: white;
   border-radius: 50%;
-  box-shadow: 0 4px 8px rgba(238, 19, 3, 0.1);
+  box-shadow: 0 4px 8px rgba(218, 158, 154, 0.1);
   transition: background-color 0.3s, transform 0.2s ease;
+  border: none;
 
   &:hover {
     background-color: $color-accent;
@@ -61,12 +62,12 @@
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.3s, visibility 0s 0.3s;
+}
 
-  &.show {
-    opacity: 1;
-    visibility: visible;
-    transition: opacity 0.3s;
-  }
+.show {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.3s;
 }
 
 .emailForm {

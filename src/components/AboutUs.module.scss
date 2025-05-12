@@ -36,7 +36,6 @@
   }
 }
 
-// Image clip styles
 .imageClip {
   position: relative;
   flex: 1;
@@ -54,7 +53,6 @@
   }
 }
 
-// Image background style
 .image {
   background-position: center;
   width: 100%;
@@ -62,7 +60,6 @@
   z-index: -1;
 }
 
-// Text content style
 .text {
   flex: 1;
   display: flex;

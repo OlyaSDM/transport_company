@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { MdEmail } from "react-icons/md";
 import styles from "./Email.module.scss";
 
@@ -9,6 +9,27 @@ export default function Email() {
   const [showForm, setShowForm] = useState(false);
   const [email, setEmail] = useState("");
   const [statusMessage, setStatusMessage] = useState("");
+
+  const formRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        formRef.current &&
+        !formRef.current.contains(event.target as Node)
+      ) {
+        setShowForm(false);
+      }
+    };
+
+    if (showForm) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [showForm]);
 
   useEffect(() => {
     const onResize = () => {
@@ -52,40 +73,47 @@ export default function Email() {
   return (
     <div className={styles.mailButtonContainer}>
       {isVisible && !showForm && (
-        <a
+        <button
           className={styles.mailButton}
           aria-label="Email us"
           onClick={() => setShowForm(true)}
         >
           <MdEmail size={34} />
-        </a>
+        </button>
       )}
 
-      {showForm && (
-        <div className={styles.formContainer}>
-          <form onSubmit={handleSubmit} className={styles.emailForm}>
-            <h3>Enter your email, and we will contact you!</h3>
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Your email"
-              required
-            />
-            <button type="submit">Submit</button>
-            {statusMessage && (
-              <p className={styles.statusMessage}>{statusMessage}</p>
-            )}
-          </form>
-          <button
-            className={styles.closeButton}
-            aria-label="Close form"
-            onClick={() => setShowForm(false)}
-          >
-            ✖
-          </button>
-        </div>
-      )}
+      <div
+        className={`${styles.formContainer} ${
+          showForm ? styles.show : ""
+        }`}
+        ref={formRef}
+      >
+        {showForm && (
+          <>
+            <form onSubmit={handleSubmit} className={styles.emailForm}>
+              <h3>Enter your email, and we will contact you!</h3>
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Your email"
+                required
+              />
+              <button type="submit">Submit</button>
+              {statusMessage && (
+                <p className={styles.statusMessage}>{statusMessage}</p>
+              )}
+            </form>
+            <button
+              className={styles.closeButton}
+              aria-label="Close form"
+              onClick={() => setShowForm(false)}
+            >
+              ✖
+            </button>
+          </>
+        )}
+      </div>
     </div>
   );
 }
