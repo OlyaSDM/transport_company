@@ -52,7 +52,7 @@ export default function AdvantagesSection() {
           style={{ objectFit: "cover" }}
           quality={90}
           className={styles.bgImage}
-          priority
+          loading="lazy"
         />
 
         <div className={styles.content}>
