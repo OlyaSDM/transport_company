@@ -75,11 +75,12 @@ export default function ServicesBlock() {
       <div className={styles.service}>
         <div className={styles.imageWrapper}>
           <Image
-            src="/s2.webp"
+            src="/images/s2.webp"
             alt="Smart Logistics Software Service"
             className={styles.image}
             fill
             sizes="(max-width: 768px) 100vw, 750px"
+            priority
           />
         </div>
         <div className={styles.text}>
@@ -101,11 +102,12 @@ export default function ServicesBlock() {
       <div className={`${styles.service} ${styles.reversed}`}>
         <div className={styles.imageWrapper}>
           <Image
-            src="/s1.webp"
+            src="/images/s1.webp"
             alt="Freight Services in the EU"
             className={styles.image}
             fill
             sizes="(max-width: 768px) 100vw, 750px"
+            priority
           />
         </div>
         <div className={styles.text}>

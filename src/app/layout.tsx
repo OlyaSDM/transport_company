@@ -13,6 +13,7 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://transportcom.netlify.app"),
   title: "Trucking Company | Reliable Freight Delivery Across Europe",
   description:
     "Fast and secure freight delivery across Russia. Serving both corporate and private clients. Professional approach and quality guarantee.",
@@ -32,7 +33,6 @@ export const metadata: Metadata = {
     images: [
       {
         url: "/og-image.jpg",
-        width: 1200,
         height: 630,
         alt: "Truck on the road — freight delivery across Europe",
       },
@@ -45,6 +45,7 @@ export const metadata: Metadata = {
     follow: true,
   },
 };
+
 
 export default function RootLayout({
   children,
