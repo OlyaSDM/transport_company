@@ -4,9 +4,8 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import styles from "./Header.module.scss";
 import Image from "next/image";
-
+import styles from "./Header.module.scss";
 
 const menuVariants = {
   hidden: { x: "100%", opacity: 0, scale: 0.95, filter: "blur(4px)" },
@@ -40,16 +39,13 @@ const menuItemVariants = {
 };
 
 export default function Header() {
-  const [hasMounted, setHasMounted] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
 
   useEffect(() => {
-    setHasMounted(true);
-
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
     };
@@ -80,35 +76,33 @@ export default function Header() {
   const isDarkText = pathname === "/serviceone" || pathname === "/servicetwo";
   const isShadow = isDarkText;
 
-  const headerClassNames = `${styles.header}
-    ${hasMounted && isScrolled && !isDarkText ? styles.scrolled : ""} 
-    ${isDarkText ? styles.darkText : ""} 
-    ${isShadow ? styles.shadow : ""} 
-    ${
-      pathname === "/serviceone" || pathname === "/servicetwo"
-        ? styles.blueHeader
-        : ""
-    }`;
+  const headerClassNames = [
+    styles.header,
+    isScrolled && !isDarkText ? styles.scrolled : "",
+    isDarkText ? styles.darkText : "",
+    isShadow ? styles.shadow : "",
+    ["/serviceone", "/servicetwo"].includes(pathname) ? styles.blueHeader : "",
+  ]
+    .filter(Boolean)
+    .join(" ");
 
   const handleLogoClick = () => {
     router.push("/");
   };
 
   return (
-    <header className={headerClassNames.trim()} role="banner">
-<div className={styles.logo} onClick={handleLogoClick}>
-<Image
-  src="/images/logo.webp"
-  alt="Trucking Company"
-  width={120}
-  height={50}
-  priority
-  unoptimized 
-/>
-</div>
+    <header className={headerClassNames} role="banner">
+      <div className={styles.logo} onClick={handleLogoClick}>
+        <Image
+          src="/images/logo.webp"
+          alt="Trucking Company"
+          width={120}
+          height={50}
+          priority
+        />
+      </div>
 
-
-      {hasMounted && isMobile && !isMenuOpen && (
+      {!isMenuOpen && isMobile && (
         <motion.div
           className={styles.burger}
           onClick={() => setIsMenuOpen(true)}
@@ -126,52 +120,50 @@ export default function Header() {
       )}
 
       <AnimatePresence>
-        {hasMounted && isMobile && isMenuOpen && (
-          <motion.div
-            className={styles.closeMenu}
-            onClick={closeMenu}
-            initial={{ rotate: -90, opacity: 0, scale: 0.6 }}
-            animate={{ rotate: 0, opacity: 1, scale: 1 }}
-            exit={{ rotate: 90, opacity: 0, scale: 0.6 }}
-            transition={{ duration: 0.4 }}
-            role="button"
-            aria-label="Close navigation menu"
-          >
-            <span className={styles.closeLine}></span>
-            <span className={styles.closeLine}></span>
-          </motion.div>
+        {isMobile && isMenuOpen && (
+          <>
+            <motion.div
+              className={styles.closeMenu}
+              onClick={closeMenu}
+              initial={{ rotate: -90, opacity: 0, scale: 0.6 }}
+              animate={{ rotate: 0, opacity: 1, scale: 1 }}
+              exit={{ rotate: 90, opacity: 0, scale: 0.6 }}
+              transition={{ duration: 0.4 }}
+              role="button"
+              aria-label="Close navigation menu"
+            >
+              <span className={styles.closeLine}></span>
+              <span className={styles.closeLine}></span>
+            </motion.div>
+
+            <motion.nav
+              className={styles.nav}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+              variants={menuVariants}
+              role="navigation"
+              aria-label="Main navigation menu"
+            >
+              <ul>
+                {menuItems.map((item, index) => (
+                  <motion.li
+                    key={index}
+                    variants={menuItemVariants}
+                    custom={index}
+                  >
+                    <Link href={item.link} onClick={closeMenu}>
+                      {item.text}
+                    </Link>
+                  </motion.li>
+                ))}
+              </ul>
+            </motion.nav>
+          </>
         )}
       </AnimatePresence>
 
-      <AnimatePresence>
-        {hasMounted && isMobile && isMenuOpen && (
-          <motion.nav
-            className={styles.nav}
-            initial="hidden"
-            animate="visible"
-            exit="exit"
-            variants={menuVariants}
-            role="navigation"
-            aria-label="Main navigation menu"
-          >
-            <ul>
-              {menuItems.map((item, index) => (
-                <motion.li
-                  key={index}
-                  variants={menuItemVariants}
-                  custom={index}
-                >
-                  <Link href={item.link} onClick={closeMenu}>
-                    {item.text}
-                  </Link>
-                </motion.li>
-              ))}
-            </ul>
-          </motion.nav>
-        )}
-      </AnimatePresence>
-
-      {hasMounted && !isMobile && (
+      {!isMobile && (
         <nav
           className={styles.nav}
           role="navigation"
