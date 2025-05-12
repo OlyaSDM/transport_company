@@ -78,7 +78,7 @@ export default function AboutUs() {
               alt="About our logistics company providing freight transportation across Europe"
               fill
               className={styles.image}
-              loading="lazy"
+              priority
               sizes="(max-width: 700px) 100vw, 50vw"
             />
           </div>
