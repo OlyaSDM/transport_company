@@ -5,6 +5,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import styles from "./Header.module.scss";
+import Image from "next/image";
+
 
 const menuVariants = {
   hidden: { x: "100%", opacity: 0, scale: 0.95, filter: "blur(4px)" },
@@ -94,9 +96,17 @@ export default function Header() {
 
   return (
     <header className={headerClassNames.trim()} role="banner">
-      <div className={styles.logo} onClick={handleLogoClick}>
-        <img src="/logo.png" alt="Trucking Company" />
-      </div>
+<div className={styles.logo} onClick={handleLogoClick}>
+<Image
+  src="/images/logo.webp"
+  alt="Trucking Company"
+  width={120}
+  height={50}
+  priority
+  unoptimized 
+/>
+</div>
+
 
       {hasMounted && isMobile && !isMenuOpen && (
         <motion.div
