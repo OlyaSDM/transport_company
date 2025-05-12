@@ -99,6 +99,7 @@ export default function Header() {
           width={120}
           height={50}
           priority
+          sizes="(max-width: 768px) 50vw, 120px"
         />
       </div>
 
