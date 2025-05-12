@@ -16,7 +16,6 @@ export default function ServicesBlock() {
     if (typeof window === "undefined") return;
 
     const services = sectionRef.current?.querySelectorAll(`.${styles.service}`);
-
     if (!services || services.length === 0) return;
 
     services.forEach((service) => {
@@ -79,7 +78,7 @@ export default function ServicesBlock() {
             alt="Smart Logistics Software Service"
             className={styles.image}
             fill
-            sizes="(max-width: 768px) 100vw, 750px"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
             priority
           />
         </div>
@@ -106,7 +105,7 @@ export default function ServicesBlock() {
             alt="Freight Services in the EU"
             className={styles.image}
             fill
-            sizes="(max-width: 768px) 100vw, 750px"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
             priority
           />
         </div>
