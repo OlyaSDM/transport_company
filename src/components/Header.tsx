@@ -92,13 +92,13 @@ export default function Header() {
 
   return (
     <header className={headerClassNames} role="banner">
-      <div className={styles.logo} onClick={handleLogoClick}>
+      <div className={styles.logo} onClick={handleLogoClick} rel="preload">
         <Image
           src="/images/logo.webp"
           alt="Trucking Company"
           width={120}
           height={50}
-          priority
+          loading="lazy"
           sizes="(max-width: 768px) 50vw, 120px"
         />
       </div>
