@@ -1,23 +1,19 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { MdEmail } from "react-icons/md";
 import styles from "./Email.module.scss";
+import { useEmailForm } from "..//app/hooks/useEmailForm";
 
 export default function Email() {
   const [isVisible, setIsVisible] = useState(true);
   const [showForm, setShowForm] = useState(false);
-  const [email, setEmail] = useState("");
-  const [statusMessage, setStatusMessage] = useState("");
-
   const formRef = useRef<HTMLDivElement>(null);
+  const { email, setEmail, status, handleSubmit } = useEmailForm();
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (
-        formRef.current &&
-        !formRef.current.contains(event.target as Node)
-      ) {
+      if (formRef.current && !formRef.current.contains(event.target as Node)) {
         setShowForm(false);
       }
     };
@@ -40,40 +36,7 @@ export default function Email() {
     window.addEventListener("resize", onResize);
     return () => window.removeEventListener("resize", onResize);
   }, []);
-    const [status, setStatus] = useState("");
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setStatusMessage("");
-
-    if (!email) {
-      setStatus("Please enter your email address.");
-      return;
-    }
-
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-      setStatus("Please enter a valid email address.");
-      return;
-    }
-
-    try {
-      const res = await fetch("/api/send-email", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email }),
-      });
-
-      if (res.ok) {
-        setStatus("Thank you! We will contact you.");
-        setEmail("");
-      } else {
-        setStatus("Error sending email. Please try again later.");
-      }
-    } catch {
-      setStatus("Error sending email. Please try again.");
-    }
-  };
   return (
     <div className={styles.mailButtonContainer}>
       {isVisible && !showForm && (
@@ -87,29 +50,27 @@ export default function Email() {
       )}
 
       <div
-        className={`${styles.formContainer} ${
-          showForm ? styles.show : ""
-        }`}
+        className={`${styles.formContainer} ${showForm ? styles.show : ""}`}
         ref={formRef}
       >
         {showForm && (
           <>
             <form onSubmit={handleSubmit} className={styles.emailForm}>
               <h3>Enter your email, and we will contact you!</h3>
-                         <input
-              id="email"
-              type="text" 
-              placeholder="Your email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              aria-describedby="emailHelp"
-            />
-            <button type="submit">Send</button>
-            {status && (
-              <p className={styles.status} aria-live="assertive">
-                {status}
-              </p>
-            )}
+              <input
+                id="email"
+                type="text"
+                placeholder="Your email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                aria-describedby="emailHelp"
+              />
+              <button type="submit">Send</button>
+              {status && (
+                <p className={styles.status} aria-live="assertive">
+                  {status}
+                </p>
+              )}
             </form>
             <button
               className={styles.closeButton}

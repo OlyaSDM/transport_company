@@ -1,5 +1,6 @@
 "use client";
-import { useState } from "react";
+
+import { useEmailForm } from "..//app/hooks/useEmailForm";
 import styles from "./Footer.module.scss";
 import { motion } from "framer-motion";
 import {
@@ -11,41 +12,7 @@ import {
 import { MdEmail } from "react-icons/md";
 
 export default function Footer() {
-  const [email, setEmail] = useState("");
-  const [status, setStatus] = useState("");
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setStatus("");
-
-    if (!email) {
-      setStatus("Please enter your email address.");
-      return;
-    }
-
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-      setStatus("Please enter a valid email address.");
-      return;
-    }
-
-    try {
-      const res = await fetch("/api/send-email", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email }),
-      });
-
-      if (res.ok) {
-        setStatus("Thank you! We will contact you.");
-        setEmail("");
-      } else {
-        setStatus("Error sending email. Please try again later.");
-      }
-    } catch {
-      setStatus("Error sending email. Please try again.");
-    }
-  };
+  const { email, setEmail, status, handleSubmit } = useEmailForm();
 
   return (
     <footer className={styles.footer} id="contacts">
@@ -98,6 +65,7 @@ export default function Footer() {
             </div>
           </address>
         </div>
+
         <div className={styles.block}>
           <form onSubmit={handleSubmit} id="contacts">
             <label htmlFor="email" className="sr-only">
