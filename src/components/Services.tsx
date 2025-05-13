@@ -78,7 +78,7 @@ export default function ServicesBlock() {
   alt="Smart Logistics Software Service"
   className={styles.image}
   fill
-  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
+  sizes="(max-width: 768px) 50vw, (max-width: 1200px) 50vw, 600px"
   priority
   decoding="async"
 />
@@ -107,7 +107,7 @@ export default function ServicesBlock() {
   alt="Freight Services in the EU"
   className={styles.image}
   fill
-  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
+  sizes="(max-width: 768px) 50vw, (max-width: 1200px) 50vw, 600px"
   priority
   decoding="async"
 />
