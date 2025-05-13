@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import styles from "./AdvantagesSection.module.scss";
 import Image from "next/image";
 
-// ✅ Прописывать мета-теги здесь нельзя — это делается в родительском page.tsx
 
 const advantages = [
   {

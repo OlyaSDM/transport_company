@@ -1,4 +1,3 @@
-// app/aboutus/page.tsx
 "use client";
 
 import { useRef, useEffect } from "react";
@@ -9,7 +8,6 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-// ✅ МЕТАДАННЫЕ
 export const metadata = {
   title: "About Us | Logistics Company",
   description:
@@ -25,7 +23,7 @@ export default function AboutUs() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      const isMobile = window.innerWidth <= 768;
+      const mediaQuery = window.matchMedia("(max-width: 768px)");
 
       const tl = gsap.timeline({
         scrollTrigger: {
@@ -38,7 +36,7 @@ export default function AboutUs() {
       tl.fromTo(
         imageRef.current,
         {
-          x: isMobile ? 0 : "-100%",
+          x: mediaQuery.matches ? 0 : "-100%", 
           opacity: 0,
         },
         {
@@ -50,7 +48,7 @@ export default function AboutUs() {
       ).fromTo(
         textRef.current,
         {
-          x: isMobile ? 0 : "100%",
+          x: mediaQuery.matches ? 0 : "100%", 
           opacity: 0,
         },
         {
