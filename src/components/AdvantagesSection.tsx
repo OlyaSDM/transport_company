@@ -3,7 +3,8 @@
 import { motion } from "framer-motion";
 import styles from "./AdvantagesSection.module.scss";
 import Image from "next/image";
-import Head from "next/head";
+
+// ✅ Прописывать мета-теги здесь нельзя — это делается в родительском page.tsx
 
 const advantages = [
   {
@@ -30,77 +31,63 @@ const advantages = [
 
 export default function AdvantagesSection() {
   return (
-    <>
-      <Head>
-        <title>Our Advantages | Logistics Company</title>
-        <meta
-          name="description"
-          content="Discover the key benefits of our transportation service: reliability, experience, and a modern approach to logistics."
-        />
-        <meta
-          name="keywords"
-          content="transportation, logistics, fleet management, AI-powered analytics, European transport"
-        />
-      </Head>
+    <section id="advantages" className={styles.advantagesSection}>
+      <div className={styles.overlay}></div>
+      <Image
+        src="/images/ad.webp"
+        alt="Truck driving on the road, symbolizing our transportation service"
+        fill
+        style={{ objectFit: "cover" }}
+        quality={90}
+        className={styles.bgImage}
+        loading="lazy"
+      />
 
-      <section id="advantages" className={styles.advantagesSection}>
-        <div className={styles.overlay}></div>
-        <Image
-          src="/images/ad.webp"
-          alt="Truck driving on the road, symbolizing our transportation service"
-          fill
-          style={{ objectFit: "cover" }}
-          quality={90}
-          className={styles.bgImage}
-          loading="lazy"
-        />
-
-        <div className={styles.content}>
-          <h2>
-            <span className={styles.line} /> Our Advantages
-          </h2>
-          <div className={styles.items}>
-            {advantages.map((adv, index) => {
-              const isLeft = index % 2 === 0;
-              return (
+      <div className={styles.content}>
+        <h2>
+          <span className={styles.line} /> Our Advantages
+        </h2>
+        <div className={styles.items}>
+          {advantages.map((adv, index) => {
+            const isLeft = index % 2 === 0;
+            return (
+              <motion.div
+                key={adv.id}
+                className={`${styles.item} ${
+                  isLeft ? styles.left : styles.right
+                }`}
+                initial={{ opacity: 0, y: 50, scale: 0.95 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                viewport={{ once: true, amount: 0.6 }}
+                transition={{
+                  duration: 0.9,
+                  delay: index * 0.3,
+                  ease: "easeOut",
+                }}
+              >
+                <div className={styles.row}>
+                  <div className={styles.number}>{adv.id}</div>
+                  <div>
+                    <h3 className={styles.text}>{adv.text}</h3>
+                    <p className={styles.description}>{adv.description}</p>
+                  </div>
+                </div>
                 <motion.div
-                  key={adv.id}
-                  className={`${styles.item} ${
-                    isLeft ? styles.left : styles.right
-                  }`}
-                  initial={{ opacity: 0, y: 50, scale: 0.95 }}
-                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                  className={styles.line}
+                  initial={{ scaleX: 0 }}
+                  whileInView={{ scaleX: 1 }}
                   viewport={{ once: true, amount: 0.6 }}
                   transition={{
-                    duration: 0.9,
-                    delay: index * 0.3,
+                    duration: 0.6,
+                    delay: index * 0.3 + 0.2,
                     ease: "easeOut",
                   }}
-                >
-                  <div className={styles.row}>
-                    <div className={styles.number}>{adv.id}</div>
-                    <div>
-                      <h3 className={styles.text}>{adv.text}</h3>
-                      <p className={styles.description}>{adv.description}</p>
-                    </div>
-                  </div>
-                  <motion.div
-                    className={styles.line}
-                    initial={{ scaleX: 0 }}
-                    whileInView={{ scaleX: 1 }}
-                    viewport={{ once: true, amount: 0.6 }}
-                    transition={{
-                      duration: 0.6,
-                      delay: index * 0.3 + 0.2,
-                      ease: "easeOut",
-                    }}
-                  />
-                </motion.div>
-              );
-            })}
-          </div>
+                />
+              </motion.div>
+            );
+          })}
         </div>
-      </section>
-    </>
+      </div>
+    </section>
   );
 }
