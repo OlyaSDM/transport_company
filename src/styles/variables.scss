@@ -1,3 +1,6 @@
+@use "sass:color";
+
+
 $color-accent: #F4B400;
 $color-primary: #3765C2;
 $color-dark: #080937;
@@ -13,7 +16,7 @@ $color-secondary-light: #e9eff5;
 $color-text-dark: #4c4d53;
 $color-text-gray: #555;
 $color-text-light: #444;
-$color-text-light-gray: lighten($color-white, 35%);
+$color-text-light-gray: color.adjust($color-white, $lightness: 35%);
 $color-text-medium: #555;
 $color-text-strong: #4c4d53;
 

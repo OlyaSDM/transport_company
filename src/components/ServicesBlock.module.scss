@@ -1,4 +1,6 @@
 @use '../styles/variables' as *;
+@use "sass:color";
+
 
 .services {
   background: $color-primary;
@@ -81,7 +83,7 @@
 
       p {
         font-size: 1.2rem;
-        color: lighten($color-white, 35%);
+        color: color.adjust($color-white, $lightness: 35%);
         margin-bottom: 1.25rem;
         line-height: 1.6;
       }
