@@ -1,5 +1,4 @@
 "use client";
-
 import { useState } from "react";
 import styles from "./Footer.module.scss";
 import { motion } from "framer-motion";
@@ -17,7 +16,19 @@ export default function Footer() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setStatus(""); 
+    setStatus("");
+
+    if (!email) {
+      setStatus("Please enter your email address.");
+      return;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      setStatus("Please enter a valid email address.");
+      return;
+    }
+
     try {
       const res = await fetch("/api/send-email", {
         method: "POST",
@@ -27,12 +38,12 @@ export default function Footer() {
 
       if (res.ok) {
         setStatus("Thank you! We will contact you.");
-        setEmail(""); 
+        setEmail("");
       } else {
-        setStatus("Error sending. Try again later.");
+        setStatus("Error sending email. Please try again later.");
       }
     } catch {
-      setStatus("Error sending. Please try again.");
+      setStatus("Error sending email. Please try again.");
     }
   };
 
@@ -87,19 +98,17 @@ export default function Footer() {
             </div>
           </address>
         </div>
-
         <div className={styles.block}>
           <form onSubmit={handleSubmit} id="contacts">
             <label htmlFor="email" className="sr-only">
-              Your email
+              If you have any questions, we will contact you
             </label>
             <input
               id="email"
-              type="email"
+              type="text"
               placeholder="Your email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              required
               aria-describedby="emailHelp"
             />
             <button type="submit">Send</button>

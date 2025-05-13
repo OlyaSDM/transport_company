@@ -40,13 +40,20 @@ export default function Email() {
     window.addEventListener("resize", onResize);
     return () => window.removeEventListener("resize", onResize);
   }, []);
+    const [status, setStatus] = useState("");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatusMessage("");
 
     if (!email) {
-      setStatusMessage("Please enter a valid email.");
+      setStatus("Please enter your email address.");
+      return;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      setStatus("Please enter a valid email address.");
       return;
     }
 
@@ -57,19 +64,16 @@ export default function Email() {
         body: JSON.stringify({ email }),
       });
 
-      const data = await res.json();
-
       if (res.ok) {
-        setStatusMessage("Thank you! We will contact you soon.");
+        setStatus("Thank you! We will contact you.");
         setEmail("");
       } else {
-        setStatusMessage(data.error || "Error sending. Try again later.");
+        setStatus("Error sending email. Please try again later.");
       }
     } catch {
-      setStatusMessage("Error sending. Try again.");
+      setStatus("Error sending email. Please try again.");
     }
   };
-
   return (
     <div className={styles.mailButtonContainer}>
       {isVisible && !showForm && (
@@ -92,17 +96,20 @@ export default function Email() {
           <>
             <form onSubmit={handleSubmit} className={styles.emailForm}>
               <h3>Enter your email, and we will contact you!</h3>
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Your email"
-                required
-              />
-              <button type="submit">Submit</button>
-              {statusMessage && (
-                <p className={styles.statusMessage}>{statusMessage}</p>
-              )}
+                         <input
+              id="email"
+              type="text" 
+              placeholder="Your email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              aria-describedby="emailHelp"
+            />
+            <button type="submit">Send</button>
+            {status && (
+              <p className={styles.status} aria-live="assertive">
+                {status}
+              </p>
+            )}
             </form>
             <button
               className={styles.closeButton}

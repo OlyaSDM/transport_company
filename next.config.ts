@@ -11,20 +11,6 @@ const nextConfig: NextConfig = {
     }
     return config;
   },
-  experimental: {
-  },
-  babel: {
-    presets: [
-      [
-        'next/babel',
-        {
-          targets: '> 0.25%, not dead', 
-          useBuiltIns: 'usage', 
-          corejs: 3, 
-        },
-      ],
-    ],
-  },
 };
 
 export default nextConfig;

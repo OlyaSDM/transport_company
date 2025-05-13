@@ -4,6 +4,7 @@
   background-color: $color-primary;
   color: $color-white;
   padding: 3rem 1rem 2rem;
+  
 
   .container {
     display: grid;
@@ -25,6 +26,7 @@
       font-size: 1.2rem;
       margin-bottom: 1rem;
     }
+
 
     p,
     address {
@@ -99,7 +101,9 @@
     }
 
     .status {
-      font-size: 0.9rem;
+      color: rgb(151, 4, 4);
+      font-size: 1rem;
+      font-weight: 700;
       margin-top: 0.2rem;
     }
   }
@@ -113,3 +117,5 @@
     color: lighten($color-white, 20%);
   }
 }
+
+
