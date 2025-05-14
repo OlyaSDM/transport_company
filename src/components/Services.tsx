@@ -73,16 +73,15 @@ export default function ServicesBlock() {
 
       <div className={styles.service}>
         <div className={styles.imageWrapper}>
-<Image
-  src="/images/s2.webp"
-  alt="Smart Logistics Software Service"
-  className={styles.image}
-  fill
-  sizes="(max-width: 768px) 50vw, (max-width: 1200px) 50vw, 600px"
-  priority
-  decoding="async"
-/>
-
+          <Image
+            src="/images/s2.webp"
+            alt="Smart Logistics Software Service"
+            className={styles.image}
+            fill
+            sizes="(max-width: 768px) 50vw, (max-width: 1200px) 50vw, 600px"
+            priority
+            decoding="async"
+          />
         </div>
         <div className={styles.text}>
           <h3>Smart Logistics Software</h3>
@@ -94,6 +93,7 @@ export default function ServicesBlock() {
             href="/serviceone"
             className={styles.button}
             aria-label="Read more about Smart Logistics Software"
+            title="Learn more about Smart Logistics Software"
           >
             Read more
           </Link>
@@ -102,16 +102,15 @@ export default function ServicesBlock() {
 
       <div className={`${styles.service} ${styles.reversed}`}>
         <div className={styles.imageWrapper}>
-<Image
-  src="/images/s1.webp"
-  alt="Freight Services in the EU"
-  className={styles.image}
-  fill
-  sizes="(max-width: 768px) 50vw, (max-width: 1200px) 50vw, 600px"
-  priority
-  decoding="async"
-/>
-
+          <Image
+            src="/images/s1.webp"
+            alt="Freight Services in the EU"
+            className={styles.image}
+            fill
+            sizes="(max-width: 768px) 50vw, (max-width: 1200px) 50vw, 600px"
+            priority
+            decoding="async"
+          />
         </div>
         <div className={styles.text}>
           <h3>Freight Services in the EU</h3>
@@ -120,6 +119,7 @@ export default function ServicesBlock() {
             href="/servicetwo"
             className={styles.button}
             aria-label="Read more about Freight Services in the EU"
+            title="Learn more about Freight Services in the EU"
           >
             Read more
           </Link>
