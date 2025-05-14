@@ -93,10 +93,9 @@ export default function Header() {
           height={50}
           layout="fixed"
           decoding="async"
-          loading="lazy"
           priority
           style={{ color: "transparent", height: "auto", maxWidth: "100%" }}
-          sizes="(max-width: 768px) 80px, 120px"
+          sizes="(max-width: 768px) 60px, 120px"
         />
       </div>
 
