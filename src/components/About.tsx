@@ -75,7 +75,7 @@ export default function AboutUs() {
             layout="fill"
             objectFit="cover"
             sizes="(max-width: 700px) 100vw, 50vw"
-            priority
+            loading="eager"
             decoding="async"
           />
         </div>
