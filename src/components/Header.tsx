@@ -96,7 +96,7 @@ export default function Header() {
           loading="lazy"
           priority
           style={{ color: "transparent", height: "auto", maxWidth: "100%" }}
-          sizes="120px"
+          sizes="(max-width: 768px) 80px, 120px"
         />
       </div>
 
