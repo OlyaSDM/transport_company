@@ -77,7 +77,8 @@ export default function ServicesBlock() {
             src="/images/s2.webp"
             alt="Smart Logistics Software Service"
             className={styles.image}
-            fill
+            layout="fill"
+            objectFit="cover"
             sizes="(max-width: 768px) 50vw, (max-width: 1200px) 50vw, 600px"
             priority
             decoding="async"
@@ -106,7 +107,8 @@ export default function ServicesBlock() {
             src="/images/s1.webp"
             alt="Freight Services in the EU"
             className={styles.image}
-            fill
+            layout="fill"
+            objectFit="cover"
             sizes="(max-width: 768px) 50vw, (max-width: 1200px) 50vw, 600px"
             priority
             decoding="async"

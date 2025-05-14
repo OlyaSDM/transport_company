@@ -36,7 +36,7 @@ export default function AboutUs() {
       tl.fromTo(
         imageRef.current,
         {
-          x: mediaQuery.matches ? 0 : "-100%", 
+          x: mediaQuery.matches ? 0 : "-100%",
           opacity: 0,
         },
         {
@@ -48,7 +48,7 @@ export default function AboutUs() {
       ).fromTo(
         textRef.current,
         {
-          x: mediaQuery.matches ? 0 : "100%", 
+          x: mediaQuery.matches ? 0 : "100%",
           opacity: 0,
         },
         {
@@ -72,7 +72,8 @@ export default function AboutUs() {
             src="/images/about.webp"
             alt="About our logistics company providing freight transportation across Europe"
             className={styles.image}
-            fill
+            layout="fill"
+            objectFit="cover"
             sizes="(max-width: 700px) 100vw, 50vw"
             priority
             decoding="async"
@@ -83,8 +84,8 @@ export default function AboutUs() {
           <p>
             We are a technology-driven logistics company providing fast and
             secure freight transportation across Europe. With our own fleet of
-            vehicles, we ensure timely and efficient deliveries while
-            leveraging advanced digital solutions to improve our operations.
+            vehicles, we ensure timely and efficient deliveries while leveraging
+            advanced digital solutions to improve our operations.
           </p>
           <p>
             Our mission is to empower logistics businesses with intelligent
