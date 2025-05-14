@@ -1,4 +1,6 @@
 @use '../styles/variables' as *;
+@use 'sass:color';
+
 
 @keyframes fadeInUp {
   from {
@@ -15,20 +17,20 @@
 .hero {
   position: relative;
   height: 100vh;
-  background: url('..//..//public/images/bg-t.webp') center/cover no-repeat;
+background: url('/images/bg-t.webp') center/cover no-repeat;
   display: flex;
   align-items: center;
   padding: 0 0.4rem;
   color: $color-white;
   overflow: hidden;
 
-  .overlay {
-    position: absolute;
-    inset: 0;
-    background-color: adjust-color($color-accent, $lightness: -15%);
-    z-index: 0;
-    transition: background 0.5s ease;
-  }
+.overlay {
+  position: absolute;
+  inset: 0;
+  background-color: color.adjust($color-accent, $lightness: -15%);
+  z-index: 0;
+  transition: background 0.5s ease;
+}
 
   .content {
     position: relative;
@@ -85,7 +87,7 @@
     }
 
     .button {
-      background-color: $color-accent;
+  background-color: $color-accent;
       color: #202020;
       font-weight: bold;
       font-size: clamp(0.9rem, 1.5vw, 1.2rem);
@@ -99,7 +101,7 @@
       animation-delay: 1.1s;
 
       &:hover {
-        background-color: darken($color-accent, 15%);
+    background-color: color.adjust($color-accent, $lightness: -15%);
       }
     }
   }

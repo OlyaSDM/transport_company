@@ -8,20 +8,16 @@ import Image from "next/image";
 import styles from "./Header.module.scss";
 
 const menuVariants = {
-  hidden: { x: "100%", opacity: 0, scale: 0.95, filter: "blur(4px)" },
+  hidden: { x: "100%", opacity: 0 },
   visible: {
     x: 0,
     opacity: 1,
-    scale: 1,
-    filter: "blur(0px)",
-    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
+    transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] },
   },
   exit: {
     x: "100%",
     opacity: 0,
-    scale: 0.97,
-    filter: "blur(4px)",
-    transition: { duration: 0.5, ease: [0.42, 0, 0.58, 1] },
+    transition: { duration: 0.4, ease: [0.42, 0, 0.58, 1] },
   },
 };
 
@@ -31,8 +27,8 @@ const menuItemVariants = {
     opacity: 1,
     y: 0,
     transition: {
-      delay: i * 0.2,
-      duration: 1,
+      delay: i * 0.15,
+      duration: 0.8,
       ease: [0.25, 0.1, 0.25, 1],
     },
   }),
@@ -74,35 +70,31 @@ export default function Header() {
   ];
 
   const isDarkText = pathname === "/serviceone" || pathname === "/servicetwo";
-  const isShadow = isDarkText;
-
   const headerClassNames = [
     styles.header,
     isScrolled && !isDarkText ? styles.scrolled : "",
     isDarkText ? styles.darkText : "",
-    isShadow ? styles.shadow : "",
     ["/serviceone", "/servicetwo"].includes(pathname) ? styles.blueHeader : "",
   ]
     .filter(Boolean)
     .join(" ");
 
-  const handleLogoClick = () => {
-    router.push("/");
-  };
+  const handleLogoClick = () => router.push("/");
 
   return (
     <header className={headerClassNames} role="banner">
-<div className={styles.logo} onClick={handleLogoClick}>
-  <Image
-    src="/images/logo.webp"
-    alt="Trucking Company"
-    width={120}
-    height={50}
-    priority 
-    sizes="(max-width: 768px) 50vw, 120px"
-  />
-</div>
-
+      <div className={styles.logo} onClick={handleLogoClick}>
+        <Image
+          src="/images/logo.webp"
+          alt="Trucking Company"
+          width={120}
+          height={50}
+          style={{ height: "auto" }}
+          priority
+          loading="eager"
+          sizes="(max-width: 768px) 50vw, 120px"
+        />
+      </div>
 
       {!isMenuOpen && isMobile && (
         <motion.div
@@ -127,9 +119,9 @@ export default function Header() {
             <motion.div
               className={styles.closeMenu}
               onClick={closeMenu}
-              initial={{ rotate: -90, opacity: 0, scale: 0.6 }}
-              animate={{ rotate: 0, opacity: 1, scale: 1 }}
-              exit={{ rotate: 90, opacity: 0, scale: 0.6 }}
+              initial={{ rotate: -90, opacity: 0 }}
+              animate={{ rotate: 0, opacity: 1 }}
+              exit={{ rotate: 90, opacity: 0 }}
               transition={{ duration: 0.4 }}
               role="button"
               aria-label="Close navigation menu"

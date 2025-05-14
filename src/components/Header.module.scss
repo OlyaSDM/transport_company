@@ -4,7 +4,6 @@
   position: fixed;
   top: 0;
   width: 100%;
-  box-sizing: border-box;
   padding: 0.125rem 1.875rem;
   display: flex;
   justify-content: space-between;
@@ -16,23 +15,27 @@
   color: #1E2A47;
 }
 
-.scrolled {
+.scrolled,
+.blueHeader {
   background-color: #3765C2;
   box-shadow: 0 0.25rem 0.375rem rgba(64, 65, 65, 0.4);
-  color: #fff;
-}
-
-.shadow {
-  box-shadow: 0 0.25rem 0.375rem rgba(4, 99, 143, 0.4); 
+  color: $color-white;
 }
 
 .logo {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #f0eaea;
-  letter-spacing: 0.0625rem;
+  width: 120px;
+  height: auto;
   cursor: pointer;
-  margin-left: 2.5rem;
+  margin-left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
 }
 
 .burger {
@@ -143,10 +146,6 @@
     padding: 0.9375rem 1.25rem;
   }
 
-  .logo {
-    margin-left: 0;
-  }
-
   .burger {
     display: flex;
   }
@@ -190,52 +189,36 @@
   }
 
   .burgerLine {
-    color: #0a1e3f;
+    background-color: $color-white;
   }
 
   .closeMenu span {
-    background-color: #fff;
+    background-color: $color-white;
   }
 
   .nav ul li a {
-    color: #fff;
+    color: $color-white;
 
     &::after {
-      background-color: #F4B400;
+      background-color: $color-accent;
     }
   }
 
   &.scrolled {
     .logo {
-      color: #fff;
+      color: $color-white;
     }
 
     .closeMenu span {
-      background-color: #fff;
+      background-color: $color-white;
     }
 
     .nav ul li a {
-      color: #fff;
+      color: $color-white;
 
       &::after {
-        background-color: #F4B400;
+        background-color: $color-accent;
       }
     }
   }
-}
-
-.whiteText {
-  color: #fff;
-}
-
-.blueHeader {
-  background-color: #3765C2 !important;
-  box-shadow: none;
-  color: #fff;
-}
-
-.scrolled {
-  background-color: #3765C2;
-  box-shadow: 0 0.25rem 0.375rem rgba(64, 65, 65, 0.4);
-  color: #fff;
 }
