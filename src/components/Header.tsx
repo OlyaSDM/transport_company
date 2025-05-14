@@ -83,17 +83,18 @@ export default function Header() {
 
   return (
     <header className={headerClassNames} role="banner">
-      <div className={styles.logo} onClick={handleLogoClick}>
+      <div rel="preload" className={styles.logo} onClick={handleLogoClick}>
         <Image
           src="/images/logo.webp"
           alt="Trucking Company"
-          data-nimg="1"
-          loading="eager"
           width={120}
           height={50}
+          layout="intrinsic"
           decoding="async"
+          loading="eager"
+          priority
           style={{ color: "transparent", height: "auto" }}
-          sizes="(max-width: 768px) 50vw, 120px"
+          sizes="120px"
         />
       </div>
 
