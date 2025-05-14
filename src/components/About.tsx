@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useEffect } from "react";
+import { useRef, useState, useEffect } from "react";
 import styles from "./AboutUs.module.scss";
 import Image from "next/image";
 import gsap from "gsap";
@@ -18,51 +18,65 @@ export const metadata = {
 };
 
 export default function AboutUs() {
-  const imageRef = useRef(null);
-  const textRef = useRef(null);
+  const imageRef = useRef<HTMLDivElement | null>(null);
+  const textRef = useRef<HTMLDivElement | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      const mediaQuery = window.matchMedia("(max-width: 768px)");
+      if (imageRef.current && textRef.current) {
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: imageRef.current,
+            start: "top 80%",
+            toggleActions: "play none none reverse",
+          },
+        });
 
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: imageRef.current,
-          start: "top 80%",
-          toggleActions: "play none none reverse",
-        },
-      });
-
-      tl.fromTo(
-        imageRef.current,
-        {
-          x: mediaQuery.matches ? 0 : "-100%",
-          opacity: 0,
-        },
-        {
-          x: 0,
-          opacity: 1,
-          duration: 1.6,
-          ease: "power3.out",
-        }
-      ).fromTo(
-        textRef.current,
-        {
-          x: mediaQuery.matches ? 0 : "100%",
-          opacity: 0,
-        },
-        {
-          x: 0,
-          opacity: 1,
-          duration: 1.6,
-          ease: "power3.out",
-        },
-        "<0.2"
-      );
+        tl.fromTo(
+          imageRef.current,
+          {
+            x: isMobile ? 0 : "-100%",
+            opacity: 0,
+          },
+          {
+            x: 0,
+            opacity: 1,
+            duration: 1.6,
+            ease: "power3.out",
+          }
+        ).fromTo(
+          textRef.current,
+          {
+            x: isMobile ? 0 : "100%",
+            opacity: 0,
+          },
+          {
+            x: 0,
+            opacity: 1,
+            duration: 1.6,
+            ease: "power3.out",
+          },
+          "<0.2"
+        );
+      }
     });
 
     return () => ctx.revert();
-  }, []);
+  }, [isMobile]);
 
   return (
     <section id="aboutus" className={styles.wrapper}>
@@ -72,8 +86,8 @@ export default function AboutUs() {
             src="/images/about.webp"
             alt="About our logistics company providing freight transportation across Europe"
             className={styles.image}
-            layout="fill"
-            objectFit="cover"
+            fill
+            style={{ objectFit: "cover" }}
             sizes="(max-width: 700px) 100vw, 50vw"
             loading="eager"
             decoding="async"

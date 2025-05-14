@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import styles from "./AdvantagesSection.module.scss";
 import Image from "next/image";
 
-
 const advantages = [
   {
     id: 1,
@@ -32,17 +31,16 @@ export default function AdvantagesSection() {
   return (
     <section id="advantages" className={styles.advantagesSection}>
       <div className={styles.overlay}></div>
-<Image
-  src="/images/ad.webp"
-  alt="Truck driving on the road, symbolizing our transportation service"
-  layout="fill"
-  objectFit="cover"
-  quality={90}
-  className={styles.bgImage}
-  loading="lazy"
-  sizes="(max-width: 768px) 100vw, 1920px"
-/>
-
+      <Image
+        src="/images/ad.webp"
+        alt="Truck driving on the road, symbolizing our transportation service"
+        layout="fill"
+        style={{ objectFit: "cover" }}
+        quality={90}
+        className={styles.bgImage}
+        loading="lazy"
+        sizes="(max-width: 768px) 100vw, 1920px"
+      />
 
       <div className={styles.content}>
         <h2>

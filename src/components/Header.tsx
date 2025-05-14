@@ -70,11 +70,13 @@ export default function Header() {
   ];
 
   const isDarkText = pathname === "/serviceone" || pathname === "/servicetwo";
+  
+  const isBlueHeader = ["/serviceone", "/servicetwo"].includes(pathname);
   const headerClassNames = [
     styles.header,
-    isScrolled && !isDarkText ? styles.scrolled : "",
-    isDarkText ? styles.darkText : "",
-    ["/serviceone", "/servicetwo"].includes(pathname) ? styles.blueHeader : "",
+    isScrolled && !isDarkText && styles.scrolled,
+    isDarkText && styles.darkText,
+    isBlueHeader && styles.blueHeader,
   ]
     .filter(Boolean)
     .join(" ");
@@ -83,17 +85,17 @@ export default function Header() {
 
   return (
     <header className={headerClassNames} role="banner">
-      <div rel="preload" className={styles.logo} onClick={handleLogoClick}>
+      <div onClick={handleLogoClick}>
         <Image
           src="/images/logo.webp"
           alt="Trucking Company"
           width={120}
           height={50}
-          layout="intrinsic"
+          layout="fixed"
           decoding="async"
           loading="eager"
           priority
-          style={{ color: "transparent", height: "auto" }}
+          style={{ color: "transparent", height: "auto", maxWidth: "100%" }}
           sizes="120px"
         />
       </div>
