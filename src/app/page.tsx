@@ -1,6 +1,5 @@
 import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
-import Head from "next/head";
 import "./globals.scss";
 import AboutUs from "@/components/About";
 import ServicesBlock from "@/components/Services";
