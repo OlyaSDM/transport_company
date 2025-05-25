@@ -89,11 +89,11 @@ export default function Header() {
         <Image
   src="/images/logo.webp"
   alt="Trucking Company"
-  width={120}
+  width={140}
   height={50}
   decoding="async"
   priority
-  style={{ width: "120px", height: "50px", color: "transparent" }}
+  style={{ width: "140px", height: "50px", color: "transparent" }}
   sizes="(max-width: 768px) 60px, 120px"
 />
 
