@@ -87,16 +87,16 @@ export default function Header() {
     <header className={headerClassNames} role="banner">
       <div onClick={handleLogoClick}>
         <Image
-          src="/images/logo.webp"
-          alt="Trucking Company"
-          width={120}
-          height={50}
-          layout="fixed"
-          decoding="async"
-          priority
-          style={{ color: "transparent", height: "auto", maxWidth: "100%" }}
-          sizes="(max-width: 768px) 60px, 120px"
-        />
+  src="/images/logo.webp"
+  alt="Trucking Company"
+  width={120}
+  height={50}
+  decoding="async"
+  priority
+  style={{ width: "120px", height: "50px", color: "transparent" }}
+  sizes="(max-width: 768px) 60px, 120px"
+/>
+
       </div>
 
       {!isMenuOpen && isMobile && (
