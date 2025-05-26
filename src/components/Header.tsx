@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import Image from "next/image";
 import styles from "./Header.module.scss";
 
@@ -39,7 +39,6 @@ export default function Header() {
   const [isMobile, setIsMobile] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const pathname = usePathname();
-  const router = useRouter();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -70,8 +69,8 @@ export default function Header() {
   ];
 
   const isDarkText = pathname === "/serviceone" || pathname === "/servicetwo";
-
   const isBlueHeader = ["/serviceone", "/servicetwo"].includes(pathname);
+
   const headerClassNames = [
     styles.header,
     isScrolled && !isDarkText && styles.scrolled,
@@ -81,23 +80,19 @@ export default function Header() {
     .filter(Boolean)
     .join(" ");
 
-  const handleLogoClick = () => router.push("/");
-
   return (
     <header className={headerClassNames} role="banner">
-      <div onClick={handleLogoClick}>
-  <Image
-    src="/images/logo.webp"
-    alt="Trucking Company"
-    width={130}
-    height={40}
-    decoding="async"
-    priority
-    style={{ width: "140px", height: "50px", color: "transparent" }}
-    sizes="(max-width: 768px) 60px, 120px"
-  />
-</div>
-
+      <Link href="/" className={styles.logo} aria-label="Homepage">
+        <Image
+          src="/images/logo.webp"
+          alt="Trucking Company"
+          width={130}
+          height={40}
+          priority
+          style={{ width: "140px", height: "50px", color: "transparent" }}
+          sizes="(max-width: 768px) 60px, 120px"
+        />
+      </Link>
 
       {!isMenuOpen && isMobile && (
         <motion.div
