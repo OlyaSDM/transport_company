@@ -46,15 +46,24 @@ export const metadata: Metadata = {
   },
 };
 
-
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className="container">
       <head>
+        <link
+          rel="preload"
+          href="/images/logo.webp"
+          as="image"
+          type="image/webp"
+          sizes="140px"
+        />
+      </head>
+      <body className={montserrat.className}>
+        <Header />
+        <main>{children}</main>
+        <Email />
+        <Footer />
+
         <Script
           id="ld-json"
           type="application/ld+json"
@@ -65,7 +74,7 @@ export default function RootLayout({
               "@type": "Organization",
               name: "TransportCom Trucking Company",
               url: "https://transportcom.netlify.app",
-              logo: "https://transportcom.netlify.app/logo.png",
+              logo: "https://transportcom.netlify.app/public/images/logo.webp", 
               contactPoint: {
                 "@type": "ContactPoint",
                 telephone: "+7-900-000-0000",
@@ -80,12 +89,6 @@ export default function RootLayout({
             }),
           }}
         />
-      </head>
-      <body className={montserrat.className}>
-        <Header />
-        <main>{children}</main>
-        <Email />
-        <Footer />
       </body>
     </html>
   );
