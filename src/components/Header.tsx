@@ -39,7 +39,7 @@ export default function Header() {
   const [isMobile, setIsMobile] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const pathname = usePathname();
-  // const router = useRouter();
+  const router = useRouter();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -81,22 +81,23 @@ export default function Header() {
     .filter(Boolean)
     .join(" ");
 
-  // const handleLogoClick = () => router.push("/");
+  const handleLogoClick = () => router.push("/");
 
   return (
     <header className={headerClassNames} role="banner">
-      <Link href="/" passHref>
-        <Image
-          src="/images/logo.webp"
-          alt="Trucking Company"
-          width={130}
-          height={40}
-          decoding="async"
-          priority
-          style={{ width: "140px", height: "50px", color: "transparent" }}
-          sizes="(max-width: 768px) 60px, 120px"
-        />
-      </Link>
+      <div onClick={handleLogoClick}>
+  <Image
+    src="/images/logo.webp"
+    alt="Trucking Company"
+    width={130}
+    height={40}
+    decoding="async"
+    priority
+    style={{ width: "140px", height: "50px", color: "transparent" }}
+    sizes="(max-width: 768px) 60px, 120px"
+  />
+</div>
+
 
       {!isMenuOpen && isMobile && (
         <motion.div
