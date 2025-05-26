@@ -70,7 +70,7 @@ export default function Header() {
   ];
 
   const isDarkText = pathname === "/serviceone" || pathname === "/servicetwo";
-  
+
   const isBlueHeader = ["/serviceone", "/servicetwo"].includes(pathname);
   const headerClassNames = [
     styles.header,
@@ -85,19 +85,18 @@ export default function Header() {
 
   return (
     <header className={headerClassNames} role="banner">
-      <div onClick={handleLogoClick}>
+      <Link href="/" passHref>
         <Image
-  src="/images/logo.webp"
-  alt="Trucking Company"
-  width={140}
-  height={50}
-  decoding="async"
-  priority
-  style={{ width: "140px", height: "50px", color: "transparent" }}
-  sizes="(max-width: 768px) 60px, 120px"
-/>
-
-      </div>
+          src="/images/logo.webp"
+          alt="Trucking Company"
+          width={130}
+          height={40}
+          decoding="async"
+          priority
+          style={{ width: "140px", height: "50px", color: "transparent" }}
+          sizes="(max-width: 768px) 60px, 120px"
+        />
+      </Link>
 
       {!isMenuOpen && isMobile && (
         <motion.div
