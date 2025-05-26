@@ -39,7 +39,7 @@ export default function Header() {
   const [isMobile, setIsMobile] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const pathname = usePathname();
-  const router = useRouter();
+  // const router = useRouter();
 
   useEffect(() => {
     const handleScroll = () => {
