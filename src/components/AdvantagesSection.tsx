@@ -34,7 +34,7 @@ export default function AdvantagesSection() {
       <Image
         src="/images/ad.webp"
         alt="Truck driving on the road, symbolizing our transportation service"
-        layout="fill"
+        fill
         style={{ objectFit: "cover" }}
         quality={90}
         className={styles.bgImage}
