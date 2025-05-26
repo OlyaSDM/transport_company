@@ -81,7 +81,7 @@ export default function Header() {
     .filter(Boolean)
     .join(" ");
 
-  const handleLogoClick = () => router.push("/");
+  // const handleLogoClick = () => router.push("/");
 
   return (
     <header className={headerClassNames} role="banner">
