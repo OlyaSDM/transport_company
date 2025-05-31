@@ -34,10 +34,10 @@ export default function Footer() {
         <div className={styles.block}>
           <h2>Contact</h2>
           <address>
-            <p>
+            {/* <p>
               <FaMapMarkerAlt aria-hidden="true" /> Lorem Ipsum Street
-            </p>
-            <p>
+            </p> */}
+            {/* <p>
               <FaPhoneAlt aria-hidden="true" />{" "}
               <a
                 href="tel:+88883888888"
@@ -45,24 +45,24 @@ export default function Footer() {
               >
                 +888 88 388 88 88
               </a>
-            </p>
+            </p> */}
             <p>
               <MdEmail aria-hidden="true" />{" "}
               <a
-                href="mailto:info@example.com"
-                aria-label="Email us at info@example.com"
+                href="mailto:info@kimmywheels.com"
+                aria-label="Email us at info@kimmywheels.com"
               >
-                info@example.com
+                info@kimmywheels.com
               </a>
             </p>
-            <div className={styles.socials}>
+            {/* <div className={styles.socials}>
               <a href="#" aria-label="WhatsApp" role="link">
                 <FaWhatsapp />
               </a>
               <a href="#" aria-label="Telegram" role="link">
                 <FaTelegramPlane />
               </a>
-            </div>
+            </div> */}
           </address>
         </div>
 
