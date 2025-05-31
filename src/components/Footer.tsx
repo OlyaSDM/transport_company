@@ -3,12 +3,12 @@
 import { useEmailForm } from "..//app/hooks/useEmailForm";
 import styles from "./Footer.module.scss";
 import { motion } from "framer-motion";
-import {
-  FaWhatsapp,
-  FaTelegramPlane,
-  FaMapMarkerAlt,
-  FaPhoneAlt,
-} from "react-icons/fa";
+// import {
+//   FaWhatsapp,
+//   FaTelegramPlane,
+//   FaMapMarkerAlt,
+//   FaPhoneAlt,
+// } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 
 export default function Footer() {
