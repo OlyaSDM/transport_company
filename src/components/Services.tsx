@@ -25,13 +25,14 @@ export default function ServicesBlock() {
 
       if (!image || !h3 || !p) return;
 
-      gsap.timeline({
-        scrollTrigger: {
-          trigger: service,
-          start: "top 80%",
-          toggleActions: "play none none reverse",
-        },
-      })
+      gsap
+        .timeline({
+          scrollTrigger: {
+            trigger: service,
+            start: "top 80%",
+            toggleActions: "play none none reverse",
+          },
+        })
         .fromTo(
           image,
           { opacity: 0, scale: 0.8 },
@@ -76,7 +77,7 @@ export default function ServicesBlock() {
             src="/images/s2.webp"
             alt="Smart Logistics Software Service"
             className={styles.image}
-            fill 
+            fill
             style={{ objectFit: "cover" }}
             sizes="(max-width: 768px) 50vw, (max-width: 1200px) 50vw, 600px"
             priority
@@ -106,7 +107,7 @@ export default function ServicesBlock() {
             src="/images/s1.webp"
             alt="Freight Services in the EU"
             className={styles.image}
-            fill 
+            fill
             style={{ objectFit: "cover" }}
             sizes="(max-width: 768px) 50vw, (max-width: 1200px) 50vw, 600px"
             priority

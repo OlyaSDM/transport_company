@@ -4,7 +4,7 @@ import { Montserrat } from "next/font/google";
 import Script from "next/script";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import Email from "@/components/Email";
+// import Email from "@/components/Email";
 
 const montserrat = Montserrat({
   subsets: ["latin", "cyrillic"],
@@ -61,7 +61,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className={montserrat.className}>
         <Header />
         <main>{children}</main>
-        <Email />
+        {/* <Email /> */}
         <Footer />
 
         <Script

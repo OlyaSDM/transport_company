@@ -1,123 +1,138 @@
-@use '../styles/variables' as *; 
+@use '../styles/variables' as *;
 @use "sass:color";
 
 
 .footer {
-  background-color: $color-primary;
-  color: $color-white;
-  padding: 3rem 1rem 2rem;
-  
+	background-color: $color-primary;
+	color: $color-white;
+	padding: 10rem 2rem 10em;
 
-  .container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-    max-width: 1300px;
-    margin: 0 auto;
-  }
+	.container {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+		gap: 2rem;
+		max-width: 1300px;
+		margin: 0 auto;
+	}
 
-  .block {
-    display: flex;
-    flex-direction: column;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
+	.block {
+		display: flex;
+		flex-direction: column;
+		margin-left: auto;
+		margin-right: auto;
+		text-align: center;
 
-    h2 {
-      color: $color-accent;
-      font-size: 1.2rem;
-      margin-bottom: 1rem;
-    }
+		h2 {
+			color: $color-accent;
+			font-size: 1.2rem;
+			margin-bottom: 1rem;
+		}
 
+		p,
+		address {
+			font-size: 0.95rem;
+			margin-bottom: 0.8rem;
+			line-height: 1.5;
+		}
 
-    p,
-    address {
-      font-size: 0.95rem;
-      margin-bottom: 0.8rem;
-      line-height: 1.5;
-    }
+		a {
+			color: inherit;
+			text-decoration: none;
 
-    a {
-      color: inherit;
-      text-decoration: none;
+			&:hover {
+				color: $color-accent;
+			}
+		}
 
-      &:hover {
-        color: $color-accent;
-      }
-    }
+		svg {
+			margin-right: 0.5rem;
+			vertical-align: middle;
+		}
+	}
 
-    svg {
-      margin-right: 0.5rem;
-      vertical-align: middle;
-    }
-  }
+	.socials {
+		display: flex;
+		gap: 1rem;
+		margin-top: 0.5rem;
 
-  .socials {
-    display: flex;
-    gap: 1rem;
-    margin-top: 0.5rem;
+		a {
+			font-size: 1.5rem;
+			color: $color-accent;
+			transition: color 0.3s;
 
-    a {
-      font-size: 1.5rem;
-      color: $color-accent;
-      transition: color 0.3s;
+			&:hover {
+				color: $color-white;
+			}
+		}
+	}
 
-      &:hover {
-        color: $color-white;
-      }
-    }
-  }
+	form {
+		display: flex;
+		flex-direction: column;
+		gap: 0.8rem;
+		margin-top: 0.5rem;
 
-  form {
-    display: flex;
-    flex-direction: column;
-    gap: 0.8rem;
-    margin-top: 0.5rem;
+		input,
+		textarea {
+			padding: .5rem 1rem;
+			border-radius: 6px;
+			border: 1px solid color.adjust($color-primary, $lightness: 20%);
+			outline: none;
+			font-size: 1rem;
 
-    input {
-      padding: 0.5rem 1rem;
-      border-radius: 6px;
-  border: 1px solid color.adjust($color-primary, $lightness: 20%);
-      outline: none;
-      font-size: 1rem;
+			&:focus {
+				border-color: $color-accent;
+				box-shadow: 0 0 0 2px rgba(255, 193, 7, 0.3);
+			}
+		}
 
-      &:focus {
-        border-color: $color-accent;
-        box-shadow: 0 0 0 2px rgba(255, 193, 7, 0.3);
-      }
-    }
+		select {
+			padding: 0.1rem 1rem;
+			border-radius: 6px;
+			border: 1px solid color.adjust($color-primary, $lightness: 20%);
+			outline: none;
+		}
 
-    button {
-      background: $color-accent;
-      color: $color-dark;
-      padding: 0.5rem 1.2rem;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 1rem;
-      transition: background 0.3s;
+		button {
+			background: $color-accent;
+			color: $color-dark;
+			padding: 0.5rem 1.2rem;
+			border: none;
+			border-radius: 6px;
+			cursor: pointer;
+			font-size: 1rem;
+			transition: background 0.3s;
 
-      &:hover {
-    background: color.adjust($color-accent, $lightness: -10%);
-      }
-    }
+			&:hover {
+				background: color.adjust($color-accent, $lightness: -10%);
+			}
+		}
 
-    .status {
-      color: rgb(151, 4, 4);
-      font-size: 1rem;
-      font-weight: 700;
-      margin-top: 0.2rem;
-    }
-  }
+		.status {
+			color: rgb(151, 4, 4);
+			font-size: 1rem;
+			font-weight: 700;
+			margin-top: 0.2rem;
+		}
+	}
 
-  .bottom {
-    text-align: center;
-    margin-top: 2rem;
-  border-top: 1px solid color.adjust($color-primary, $lightness: 20%);
-    padding-top: 1rem;
-    font-size: 0.85rem;
-  color: color.adjust($color-white, $lightness: 20%);
-  }
+	.bottom {
+		text-align: center;
+		margin-top: 2rem;
+		border-top: 1px solid color.adjust($color-primary, $lightness: 20%);
+		padding-top: 1rem;
+		font-size: 0.85rem;
+		color: color.adjust($color-white, $lightness: 20%);
+	}
 }
 
+.errorInput {
+	border: 2px solid #ff4d4f;
+}
 
+.errorText {
+	color: #ff4d4f;
+	font-size: 0.85rem;
+	margin-top: -0.8rem;
+	text-align: left;
+}

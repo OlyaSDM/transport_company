@@ -9,11 +9,24 @@ export default async function handler(
     return res.status(405).json({ message: "Method not allowed" });
   }
 
-  const { email } = req.body;
+  const { name, email, topic, message } = req.body;
 
-  if (!email || !email.includes("@")) {
-    return res.status(400).json({ message: "Invalid email" });
+  if (
+    !name ||
+    typeof name !== "string" ||
+    !email ||
+    !email.includes("@") ||
+    !topic ||
+    !message ||
+    typeof message !== "string"
+  ) {
+    return res.status(400).json({ message: "Invalid input" });
   }
+
+  const recipient =
+    topic === "financial"
+      ? "account@kimmywheels.com"
+      : "info@kimmywheels.com";
 
   try {
     const transporter = nodemailer.createTransport({
@@ -26,9 +39,9 @@ export default async function handler(
 
     await transporter.sendMail({
       from: email,
-      to: process.env.EMAIL_USER,
-      subject: "New application from the site",
-      text: `The user left an email: ${email}`,
+      to: recipient,
+      subject: `New ${topic} inquiry from website`,
+      text: `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`,
     });
 
     return res.status(200).json({ message: "Email sent successfully" });

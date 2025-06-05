@@ -79,7 +79,7 @@ export default function AboutUs() {
   }, [isMobile]);
 
   return (
-    <section id="aboutus" className={styles.wrapper}>
+    <section id="aboutus"  className={styles.wrapper}>
       <div className={styles.container}>
         <div className={styles.imageClip} ref={imageRef}>
           <Image

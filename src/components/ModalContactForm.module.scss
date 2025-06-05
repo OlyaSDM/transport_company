@@ -1,0 +1,104 @@
+@use "sass:color";
+@import "@/styles/variables";
+
+
+.backdrop {
+	position: fixed;
+	inset: 0;
+	background: rgba(0, 0, 0, 0.5);
+	z-index: 1000;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.modal {
+	background: white;
+	padding: 2rem;
+	border-radius: 12px;
+	max-width: 500px;
+	width: 100%;
+	position: relative;
+}
+
+.close {
+	position: absolute;
+	top: 0.5rem;
+	right: 1rem;
+	background: none;
+	border: none;
+	font-size: 1.8rem;
+	cursor: pointer;
+}
+
+.close:hover {
+	color: $color-accent;
+}
+
+.status {
+	margin-top: 1rem;
+	color: green;
+}
+
+.block {
+	display: flex;
+	flex-direction: column;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	gap: 1rem;
+}
+
+.form {
+	display: flex;
+	flex-direction: column;
+	gap: 0.8rem;
+	margin-top: 0.5rem;
+
+	input,
+	textarea {
+		padding: 0.5rem 1rem;
+		border-radius: 6px;
+		border: 1px solid color.adjust($color-primary, $lightness: 20%);
+		outline: none;
+		font-size: 1rem;
+
+		&:focus {
+			border-color: $color-accent;
+			box-shadow: 0 0 0 2px rgba(255, 193, 7, 0.3);
+		}
+	}
+
+	select {
+		padding: 0.1rem 1rem;
+		border-radius: 6px;
+		border: 1px solid color.adjust($color-primary, $lightness: 20%);
+		outline: none;
+	}
+}
+
+.btn {
+	background: $color-accent;
+	color: $color-dark;
+	padding: 0.5rem 1.2rem;
+	border: none;
+	border-radius: 6px;
+	cursor: pointer;
+	font-size: 1rem;
+	transition: background 0.3s;
+
+	&:hover {
+		background: color.adjust($color-accent, $lightness: -10%);
+	}
+}
+
+.errorInput {
+	border: 2px solid #ff4d4f;
+}
+
+.errorText {
+	color: #ff4d4f;
+	font-size: 0.85rem;
+	margin-top: -0.04rem;
+	text-align: left;
+}

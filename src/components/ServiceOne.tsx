@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import styles from "./ServiceOne.module.scss";
-import { CheckCircle } from "lucide-react"; 
+import { CheckCircle } from "lucide-react";
 
 const features = [
   {
